@@ -8,7 +8,7 @@
 // import Footer from '../components/Footer'
 
 import Layout from "../../../components/Layout";
-import ChapV2 from "../../../components/ChapV2";
+import ChapV2 from "../../../components/Chap/ChapV2";
 
 const ChapPage = () => {
   return (

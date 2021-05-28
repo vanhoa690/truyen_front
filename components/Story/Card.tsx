@@ -1,67 +1,27 @@
 import React from 'react';
 
-// interface CardProps {
-//   image: Object;
-// }
-
-// interface ImgageProps {
-//   tags: Array<T>;
-// }
-
-// interface tagProps {
-//   tag: any;
-// }
-
-
-
-
-// const tags = ['tag1', 'tag2'];
-// const tags = 'tag1, tag2';
-// const image = {
-//   webformatURL: 'https://sunhouse.com.vn/pic/news/images/image-20210514134956-5.jpeg',
-//   user: 'abc',
-//   views: 123,
-//   downloads: 12212,
-//   likes: 324324,
-//   tags: 'tag1, tag2',
-// }
-
 interface Props {
-  image: any;
+  card: any;
 }
 
-const Card = ({ image }: Props) => {
-  // const Card = () => {
-  const tags = image.tags.split(',');
+const Card = ({ card }: Props) => {
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <img src={image.webformatURL} alt="" className="w-full" />
-      <div className="px-6 py-4">
-        <div className="font-bold text-purple-500 text-xl mb-2">
-          Photo by {image.user}
-        </div>
-        <ul>
-          <li>
-            <strong>Views: </strong>
-            {image.views}
-          </li>
-          <li>
-            <strong>Downloads: </strong>
-            {image.downloads}
-          </li>
-          <li>
-            <strong>Likes: </strong>
-            {image.likes}
-          </li>
-        </ul>
+    <div className="flex flex-col md:flex-row overflow-hidden
+    bg-white rounded-lg shadow-xl  mt-4 w-100 mx-2">
+
+      <div className="h-64 w-auto md:w-1/2">
+        <img className="inset-0 h-full w-full object-cover object-center" src={card.img} />
       </div>
-      <div className="px-6 py-4">
-        {tags.map((tag: any, index: number) => (
-          <span key={index} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-            #{tag}
-          </span>
-        ))}
+
+      <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
+        <h3 className="font-semibold text-lg leading-tight truncate">{card.title}</h3>
+        <p className="mt-2">
+          {card.excerpt}
+        </p>
+        <p className="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
+          {card.author} &bull; {card.date}
+        </p>
       </div>
     </div>
   )

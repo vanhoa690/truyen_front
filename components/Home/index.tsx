@@ -65,8 +65,8 @@ const images = [
 ]
 const Home = () => {
   return (
-    <div className="container mx-auto mt-16">
-      <div className="grid grid-cols-3 gap-4">
+    <div className="container mx-auto mt-16 bg-gray-100 p-10">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 xs:grid-cols-1 gap-4 justify-items-center">
         {images.map((image) => (
           <Card key={image.id} image={image} />
         ))}
