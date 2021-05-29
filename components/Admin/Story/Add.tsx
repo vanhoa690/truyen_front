@@ -1,9 +1,10 @@
-import Form from "./Form"
-
+import StoryForm from "./StoryForm"
 
 const Add = () => {
-  return (
-    <Form />
-  );
+  const handleSubmit = (values: any) => {
+    console.log("Form submit: ", values)
+  }
+
+  return <StoryForm onSubmit={handleSubmit} />
 }
 export default Add

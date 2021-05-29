@@ -1,10 +1,8 @@
 // import Card from "./Card"
 import Link from "next/link"
-import { useRouter } from 'next/router'
-
+import { useRouter } from "next/router"
 
 const Story = () => {
-
   const router = useRouter()
   const { route } = router
 
@@ -65,16 +63,10 @@ const Story = () => {
                   </td>
 
                   <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">
-                    <span
-                      className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                      v-if="story.completed"
-                    >
+                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                       Full
                     </span>
-                    <span
-                      className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-100 text-green-800"
-                      v-else
-                    >
+                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-100 text-green-800">
                       Updating
                     </span>
                   </td>

@@ -1,9 +1,6 @@
-import Form from "./Form"
-
+import ChapForm from "./ChapForm"
 
 const Add = () => {
-  return (
-    <Form />
-  );
+  return <ChapForm />
 }
 export default Add

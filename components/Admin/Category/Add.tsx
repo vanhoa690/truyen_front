@@ -1,9 +1,10 @@
-import Form from "./Form"
-
+import CategoryForm from "./CategoryForm"
 
 const Add = () => {
-  return (
-    <Form />
-  );
+  const handleSubmit = (values: any) => {
+    console.log("Form submit: ", values)
+  }
+
+  return <CategoryForm onSubmit={handleSubmit} />
 }
 export default Add

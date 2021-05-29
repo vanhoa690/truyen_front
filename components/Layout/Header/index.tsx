@@ -1,21 +1,21 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 import {
   BellIcon,
   ChatIcon,
   ChevronDownIcon,
   HomeIcon,
   UserGroupIcon,
-  ViewGridIcon,
-} from "@heroicons/react/solid";
+  ViewGridIcon
+} from "@heroicons/react/solid"
 import {
   FlagIcon,
   PlayIcon,
   SearchIcon,
-  ShoppingCartIcon,
-} from "@heroicons/react/outline";
+  ShoppingCartIcon
+} from "@heroicons/react/outline"
 
-import HeaderIcon from "./HeaderIcon";
+import HeaderIcon from "./HeaderIcon"
 
 const Header = () => {
   return (
@@ -23,7 +23,17 @@ const Header = () => {
       {/* Left */}
       <div className="flex items-center">
         <Link href="/">
-          <a >
+          <a>
+            <Image
+              src="https://links.papareact.com/5me"
+              width={40}
+              height={40}
+              layout="fixed"
+            />
+          </a>
+        </Link>
+        <Link href="/admin">
+          <a>
             <Image
               src="https://links.papareact.com/5me"
               width={40}
@@ -67,7 +77,7 @@ const Header = () => {
         <ChevronDownIcon className="icon" />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
