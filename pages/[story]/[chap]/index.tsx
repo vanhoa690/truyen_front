@@ -8,12 +8,12 @@
 // import Footer from '../components/Footer'
 
 import Layout from "../../../components/Layout";
-import Chap from "../../../components/Chap";
+import ChapV2 from "../../../components/ChapV2";
 
 const ChapPage = () => {
   return (
     <Layout>
-      <Chap />
+      <ChapV2 />
     </Layout>
   )
 }

@@ -1,32 +1,21 @@
 // import Card from "./Card"
+import Link from "next/link"
+import { useRouter } from 'next/router'
 
-const cards = [
-  {
-    name: "Truyen Tranh",
-    number: 123
-  },
-  {
-    name: "Truyen Tranh",
-    number: 123
-  },
-
-  {
-    name: "Truyen Tranh",
-    number: 123
-  },
-  {
-    name: "Truyen Tranh",
-    number: 123
-  },
-  {
-    name: "Truyen Tranh",
-    number: 123
-  }
-]
 const Category = () => {
+
+  const router = useRouter()
+  const { route } = router
+
   return (
     <>
       <h3 className="text-gray-700 text-3xl font-medium">Category List</h3>
+
+      <Link href={`${route}/add`}>
+        <button className="bg-blue-400 py-3 px-4 mt-4 rounded text-sm font-semibold hover:bg-opacity-75">
+          Add Category
+        </button>
+      </Link>
 
       <div className="flex flex-col mt-8">
         <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">

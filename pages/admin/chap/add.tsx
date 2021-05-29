@@ -5,14 +5,14 @@
 // import Sidebar from '../components/Layout/Sidebar'
 // import Widgets from '../components/Layout/Widgets'
 // import Footer from '../components/Footer'
-import LayoutAdmin from "../../components/LayoutAdmin"
-import Story from "../../components/Admin/Story"
+import LayoutAdmin from "../../../components/LayoutAdmin"
+import ChapAdd from "../../../components/Admin/Chap/Add"
 
-const StoryPage = () => {
+const ChapAddPage = () => {
   return (
     <LayoutAdmin>
-      <Story />
+      <ChapAdd />
     </LayoutAdmin>
   )
 }
-export default StoryPage
+export default ChapAddPage

@@ -1,32 +1,28 @@
 import React from "react"
 
 interface Props {
-  image: any
+  story: any
 }
 
-const Card = ({ image }: Props) => {
+const Card = ({ story }: Props) => {
   // const Card = () => {
-  const tags = image.tags.split(",")
+  const tags = story.tags.split(",")
 
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <img src={image.webformatURL} alt="" className="w-full" />
+      <img src={story.webformatURL} alt="" className="w-full" />
       <div className="px-6 py-4">
         <div className="font-bold text-purple-500 text-xl mb-2">
-          Photo by {image.user}
+          {story.name}
         </div>
         <ul>
           <li>
             <strong>Views: </strong>
-            {image.views}
+            {story.views}
           </li>
           <li>
-            <strong>Downloads: </strong>
-            {image.downloads}
-          </li>
-          <li>
-            <strong>Likes: </strong>
-            {image.likes}
+            <strong>Number Chap: </strong>
+            {story.numberChap}
           </li>
         </ul>
       </div>

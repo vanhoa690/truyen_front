@@ -2,7 +2,7 @@ import SidebarLink from "./SidebarLink"
 import Link from "next/link"
 const BASE_ADMIN_URL = "/admin"
 const links = [
-  // { name: "Admin", path: `${BASE_ADMIN_URL}/` },
+  { name: "Dashboard", path: `${BASE_ADMIN_URL}/` },
   { name: "Category", path: `${BASE_ADMIN_URL}/category` },
   { name: "Story", path: `${BASE_ADMIN_URL}/story` },
   { name: "Chap", path: `${BASE_ADMIN_URL}/chap` }
@@ -27,7 +27,9 @@ const Sidebar = () => {
 
         <nav className="mt-10">
           <Link href="/admin">
-            <a className="flex items-center duration-200 mt-4 py-2 px-6 border-l-4 bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100">
+            <a className="flex items-center duration-200 mt-4 py-2 px-6 border-l-4 bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100"
+            // "             flex items-center duration-200 mt-4 py-2 px-6 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
+            >
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 20 20"

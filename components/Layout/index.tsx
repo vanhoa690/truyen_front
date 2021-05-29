@@ -2,8 +2,8 @@ import Head from 'next/head'
 // import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
 import Header from './Header'
-// import Sidebar from './Sidebar'
-// import Widgets from './Widgets'
+import Sidebar from './Sidebar'
+import Widgets from './Widgets'
 import Footer from './Footer'
 
 interface Props {
@@ -20,7 +20,9 @@ const Layout = ({ children, title = "Truyennho.com" }: Props) => {
       </Head>
       <Header />
       <main className="flex">
+        <Sidebar />
         {children}
+        <Widgets />
       </main>
       <Footer />
     </>

@@ -1,18 +1,4 @@
-// import Image from "next/image";
-// import {
-//   BellIcon,
-//   ChatIcon,
-//   ChevronDownIcon,
-//   HomeIcon,
-//   UserGroupIcon,
-//   ViewGridIcon,
-// } from "@heroicons/react/solid";
-// import {
-//   FlagIcon,
-//   PlayIcon,
-//   SearchIcon,
-//   ShoppingCartIcon,
-// } from "@heroicons/react/outline";
+
 import Link from "next/link";
 // import HeaderIcon from "./HeaderIcon";
 
