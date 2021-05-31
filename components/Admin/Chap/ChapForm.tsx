@@ -1,5 +1,7 @@
 import { useState } from "react"
 import Input from "./Input"
+import Textarea from "./Textarea"
+import UploadImage from "./UploadImage"
 import SelectField from "./SelectField"
 import Checkbox from "./Checkbox"
 import { FastField, Form, Formik } from "formik"
@@ -11,17 +13,12 @@ const PHOTO_CATEGORY_OPTIONS = [
   { value: 4, label: "Animals" },
   { value: 5, label: "Styles" }
 ]
-const CategoryForm = (props: any) => {
-  const dataInit = {
-    name: "",
-    slug: "",
-    titleSEO: "",
-    description: "",
-    descSEO: "",
-    image: "",
-    visible: true
-  }
+const ChapForm = (props: any) => {
+  // const { isAddMode } = props;
+  const { dataInit } = props
+
   const [input, setInput] = useState(Object.assign({}, dataInit))
+
   const rows = [
     {
       title: "Name",
@@ -41,6 +38,11 @@ const CategoryForm = (props: any) => {
       vaule: input.description,
       type: "text"
     },
+    // {
+    //   title: "Description",
+    //   name: "description",
+    //   vaule: input.description
+    // },
     {
       title: "Title SEO",
       name: "titleSEO",
@@ -62,21 +64,20 @@ const CategoryForm = (props: any) => {
     name: "visible",
     value: input.visible
   }
-
-  const initialValues = {
-    name: "",
-    slug: "",
-    storyId: null,
-    description: "",
-    titleSEO: "",
-    descSEO: "",
-    image: "",
-    visible: true
+  const textarea = {
+    title: "Description",
+    name: "description",
+    value: input.description
+  }
+  const imageUpload = {
+    title: "imageUpload",
+    name: "imageUpload",
+    value: input.imageUpload
   }
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("This field is required."),
-    slug: Yup.string().required("This field is required."),
-    description: Yup.string().required("This field is required.")
+    // name: Yup.string().required("This field is required."),
+    // slug: Yup.string().required("This field is required."),
+    // description: Yup.string().required("This field is required."),
     // image: Yup.string().required("This field is required.")
     // categoryId: Yup.number()
     //   .required('This field is required.')
@@ -87,17 +88,17 @@ const CategoryForm = (props: any) => {
     //   otherwise: Yup.string().notRequired(),
     // })
   })
+
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={dataInit}
       validationSchema={validationSchema}
-      onSubmit={values => console.log(values)}
-      // onSubmit={props.onSubmit}
+      onSubmit={props.onSubmit}
     >
       {formikProps => {
         // do something here ...
         const { values, errors, touched, isSubmitting } = formikProps
-        // console.log({ values, errors, touched })
+        // console.log({ formikProps })
 
         return (
           <Form>
@@ -125,6 +126,32 @@ const CategoryForm = (props: any) => {
                   placeholder="..."
                 />
               ))}
+            <FastField
+              name={textarea.name}
+              component={Textarea}
+              label={textarea.title}
+            />
+            {/* <FastField
+              name={imageUpload.name}
+              component={UploadImage}
+              label={imageUpload.title}
+            /> */}
+            {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+              <div>
+                <label className="text-gray-700" htmlFor={imageUpload.name}>
+                  {imageUpload.title}
+                </label>
+
+                <input type="file"
+                  name={imageUpload.name}
+                  // onChange={(event) => formikProps.setFieldValue(imageUpload.name, event.target.files[0])}
+                  onChange={uploadAvatar}
+                  className=" w-full mt-2 border border-gray-900"
+                />
+              </div>
+            </div>
+
+             */}
             <button
               type="submit"
               className="px-6 py-3 bg-gray-600 rounded-md text-white font-medium tracking-wide hover:bg-gray-500 mt-6"
@@ -137,4 +164,4 @@ const CategoryForm = (props: any) => {
     </Formik>
   )
 }
-export default CategoryForm
+export default ChapForm

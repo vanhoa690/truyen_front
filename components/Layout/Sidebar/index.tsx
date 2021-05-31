@@ -61,7 +61,7 @@ const Sidebar = () => {
         categories.map((category: any, index: number) => (
           <SidebarRow
             category={category}
-            handleClick={() => handleClick(category.id)}
+            handleClick={handleClick(category.id)}
           />
         ))}
       {/* <SidebarRow Icon={UserGroupIcon} title="Groups" />

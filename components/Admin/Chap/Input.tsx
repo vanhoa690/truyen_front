@@ -37,10 +37,11 @@ const Input = (props: any) => {
           disabled={disabled}
           placeholder={placeholder}
           autoComplete="off"
-          className="w-full mt-2 border border-gray-900"
-          // invalid={showError}
+          // className="w-full mt-2 border border-gray-900"
+          className={`${showError} ? "is-invalid" : "" w-full mt-2 border border-gray-900`}
+        // invalid={showError}
         />
-        {/* {showError && <p>{errors[name]}</p>} */}
+        {showError && <p>{errors[name]}</p>}
         {/* <ErrorMessage name={name} component={FormFeedback} /> */}
       </div>
     </div>

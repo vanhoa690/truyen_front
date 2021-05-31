@@ -44,7 +44,6 @@ const SelectField = (props: any) => {
           </label>
         )}
         <Select
-          id={name}
           {...field}
           value={selectedOption}
           onChange={handleSelectedOptionChange}

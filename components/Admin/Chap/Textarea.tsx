@@ -29,6 +29,14 @@ const Textarea = (props: any) => {
           </label>
         )}
         y
+        <textarea
+          id={name}
+          {...field}
+          // className="resize-none border rounded-md"
+          className={`${showError} ? "is-invalid" : "" w-full resize-none border rounded-md`}
+        >
+        </textarea>
+        {showError && <p>{errors[name]}</p>}
         {/* <input
           id={name}
           {...field}
@@ -38,9 +46,9 @@ const Textarea = (props: any) => {
           placeholder={placeholder}
           autoComplete="off"
           className="w-full mt-2 border border-gray-900"
-          // invalid={showError}
-        /> */}
-        {/* {showError && <p>{errors[name]}</p>} */}
+          invalid={showError}
+        />
+        {showError && <p>{errors[name]}</p>} */}
         {/* <ErrorMessage name={name} component={FormFeedback} /> */}
       </div>
     </div>
