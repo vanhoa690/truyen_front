@@ -26,12 +26,20 @@ const CategoryForm = (props: any) => {
     {
       title: "Name",
       name: "name",
-      vaule: input.name
+      vaule: input.name,
+      type: "text"
     },
     {
       title: "Slug",
       name: "slug",
-      vaule: input.slug
+      vaule: input.slug,
+      type: "text"
+    },
+    {
+      title: "Description",
+      name: "description",
+      vaule: input.description,
+      type: "text"
     },
     {
       title: "Title SEO",
@@ -68,8 +76,8 @@ const CategoryForm = (props: any) => {
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("This field is required."),
     slug: Yup.string().required("This field is required."),
-    description: Yup.string().required("This field is required."),
-    image: Yup.string().required("This field is required.")
+    description: Yup.string().required("This field is required.")
+    // image: Yup.string().required("This field is required.")
     // categoryId: Yup.number()
     //   .required('This field is required.')
     //   .nullable(),
