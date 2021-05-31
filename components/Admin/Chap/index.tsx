@@ -13,7 +13,12 @@ const Chap = () => {
 
       <Link href={`${route}/add`}>
         <button className="bg-blue-400 py-3 px-4 mt-4 rounded text-sm font-semibold hover:bg-opacity-75">
-          Add Category
+          Add Chap
+        </button>
+      </Link>
+      <Link href={`${route}/edit/id_abc`}>
+        <button className="bg-blue-400 py-3 px-4 mt-4 rounded text-sm font-semibold hover:bg-opacity-75">
+          Edit Chap
         </button>
       </Link>
 
@@ -68,13 +73,11 @@ const Chap = () => {
                   <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">
                     <span
                       className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                      v-if="story.completed"
                     >
                       Full
                     </span>
                     <span
                       className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-100 text-green-800"
-                      v-else
                     >
                       Updating
                     </span>

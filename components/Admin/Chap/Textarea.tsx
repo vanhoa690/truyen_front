@@ -14,7 +14,7 @@ interface Props {
 //   disabled: false
 // }
 // const Input = ({ title, name, value, onChange }: Props) => {
-const Input = (props: any) => {
+const Textarea = (props: any) => {
   const { field, form, type, label, placeholder, disabled } = props
   const { name } = field
   const { errors, touched } = form
@@ -28,8 +28,15 @@ const Input = (props: any) => {
             {label}
           </label>
         )}
-        {/* <label className="text-gray-700">{title}</label> */}
-        <input
+        <textarea
+          id={name}
+          {...field}
+          // className="resize-none border rounded-md"
+          className={`${showError} ? "is-invalid" : "" w-full resize-none border rounded-md`}
+        >
+        </textarea>
+        {showError && <p>{errors[name]}</p>}
+        {/* <input
           id={name}
           {...field}
           // type={type}
@@ -37,14 +44,13 @@ const Input = (props: any) => {
           disabled={disabled}
           placeholder={placeholder}
           autoComplete="off"
-          // className="w-full mt-2 border border-gray-900"
-          className={`${showError} ? "is-invalid" : "" w-full mt-2 border border-gray-900`}
-        // invalid={showError}
+          className="w-full mt-2 border border-gray-900"
+          invalid={showError}
         />
-        {showError && <p>{errors[name]}</p>}
+        {showError && <p>{errors[name]}</p>} */}
         {/* <ErrorMessage name={name} component={FormFeedback} /> */}
       </div>
     </div>
   )
 }
-export default Input
+export default Textarea
