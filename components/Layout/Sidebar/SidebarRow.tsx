@@ -1,16 +1,19 @@
-import Image from "next/image";
+import Image from "next/image"
 
 interface Props {
-  category: any;
+  category: any
   // src?: any;
   // category: String;
   // Icon: any;
-  handleClick(id: any): void;
+  // handleClick(id: any): void;
 }
 
-const Sidebar = ({ category, handleClick }: Props) => {
+const Sidebar = ({ category }: Props) => {
   return (
-    <div className="flex items-center space-x-2 p-4 hover:bg-gray-200 rounded-xl cursor-pointer " onClick={handleClick(category.id)}>
+    <div
+      className="flex items-center space-x-2 p-4 hover:bg-gray-200 rounded-xl cursor-pointer "
+      // onClick={() => handleClick(category.id)}
+    >
       {category.src && (
         <Image
           className="rounded-full"
@@ -23,7 +26,7 @@ const Sidebar = ({ category, handleClick }: Props) => {
       {category.icon && <category.icon className="h-8 w-8 text-blue-500" />}
       <p className="hidden sm:inline-flex font-medium">{category.name}</p>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

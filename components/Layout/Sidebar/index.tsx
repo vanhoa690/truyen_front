@@ -50,10 +50,10 @@ import SidebarRow from "./SidebarRow"
 const Sidebar = () => {
   const [id, setId] = useState("")
 
-  const handleClick = (id: any) => {
-    setId(id)
-    console.log(id)
-  }
+  // const handleClick = (id: any) => {
+  //   setId(id)
+  //   console.log(id)
+  // }
 
   return (
     <div className="p-2 mt-5 max-w-[600px] xl:min-w-[300px]">
@@ -61,7 +61,7 @@ const Sidebar = () => {
         categories.map((category: any, index: number) => (
           <SidebarRow
             category={category}
-            handleClick={handleClick(category.id)}
+            // handleClick={handleClick(category.id)}
           />
         ))}
       {/* <SidebarRow Icon={UserGroupIcon} title="Groups" />

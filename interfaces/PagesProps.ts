@@ -1,0 +1,44 @@
+import React from "react"
+// import { AxiosError } from "axios";
+import { Action } from "../hooks/useMutation"
+import { IChangeElement } from "../hooks/useForm"
+
+export interface FormFieldsProps<T> {
+  formState: T
+  handleChange: (event: React.ChangeEvent<IChangeElement>) => void
+}
+
+export interface ListItemProps<T> {
+  record: T
+}
+
+export interface RecordIndexProps<T> {
+  apiPath: string
+  apiOptions: {}
+  ListItem: React.FC<ListItemProps<T>>
+  FormFields: React.FC<FormFieldsProps<T>>
+  emptyRecord: T
+}
+
+export interface RecordNewProps<T> {
+  FormFields: React.FC<FormFieldsProps<T>>
+  activeRecord: T
+  create: Action<T>
+  remove: Action<T>
+  success?: boolean
+}
+
+export interface RecordEditProps<T> {
+  FormFields: React.FC<FormFieldsProps<T>>
+  activeRecord: T
+  update: Action<T>
+  remove: Action<T>
+  success?: boolean
+}
+
+export interface RecordFormProps<T> {
+  FormFields: React.FC<FormFieldsProps<T>>
+  activeRecord: T
+  submitAction: Action<T>
+  success?: boolean
+}

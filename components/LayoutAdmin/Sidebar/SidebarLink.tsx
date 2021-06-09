@@ -1,12 +1,32 @@
-import Image from "next/image"
 import Link from "next/link"
-interface Props {
-  // path: URL
-  // name: String.
-  link: any
+
+// import CategoryPage from "../../../pages/admin/category"
+// import StoryPage from "../../../pages/admin/story"
+// import ChapPage from "../../../pages/admin/chap"
+
+interface Link {
+  name:string,
+  path:string,
+}
+interface IProps {
+  link: Link
 }
 
-const SidebarLink = ({ link }: Props) => {
+const SidebarLink = ({ link }: IProps) => {
+
+
+  // const renderSwitch = () => {
+  //   switch (page) {
+  //     case Page.Category:
+  //       return <CategoryPage />
+  //     case Page.Story:
+  //       return <StoryPage />
+  //     case Page.Chap:
+  //       return <ChapPage />
+  //     default:
+  //       return ""
+  //   }
+  // }
   return (
     <Link href={link.path}>
       <a className="flex items-center duration-200 mt-4 py-2 px-6 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100">
