@@ -4,22 +4,22 @@ import Sidebar from "./Sidebar"
 import { Page, usePage } from "../../../contexts/Page"
 import CategoryPage from "../Category"
 import StoryPage from "../Story"
-import ChapPage from "../Chap-draft"
+import ChapPage from "../Chap"
 
 const Layout = () => {
-  const { page } = usePage();
+  const { page } = usePage()
   const renderSwitch = () => {
     switch (page) {
       case Page.Category:
-        return <CategoryPage />;
+        return <CategoryPage />
       case Page.Story:
-        return <StoryPage />;
+        return <StoryPage />
       case Page.Chap:
-        return <ChapPage />;
+        return <ChapPage />
       default:
-        return "";
+        return ""
     }
-  };
+  }
   return (
     <>
       <Head>
@@ -33,9 +33,7 @@ const Layout = () => {
           <Header />
 
           <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-            <div className="container mx-auto px-6 py-8">
-              {renderSwitch()}
-            </div>
+            <div className="container mx-auto px-6 py-8">{renderSwitch()}</div>
           </main>
         </div>
       </div>
