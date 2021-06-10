@@ -1,5 +1,5 @@
 import React from "react"
-// import { AxiosError } from "axios";
+import { AxiosError } from "axios"
 import { Action } from "../hooks/useMutation"
 import { IChangeElement } from "../hooks/useForm"
 
@@ -15,9 +15,28 @@ export interface ListItemProps<T> {
 export interface RecordIndexProps<T> {
   apiPath: string
   apiOptions: {}
-  ListItem: React.FC<ListItemProps<T>>
+  // ListItem: React.FC<ListItemProps<T>>
   FormFields: React.FC<FormFieldsProps<T>>
   emptyRecord: T
+}
+export interface RecordListProps<T> {
+  // ListItem: React.FC<ListItemProps<T>>
+  records: T[]
+  emptyRecord: T
+  activeRecord: T
+  setActiveRecord: Function
+  // loading: boolean;
+  // error?: AxiosError;
+}
+export interface TableProps<T> {
+  records: T[]
+  setActiveRecord: Function
+}
+export interface RecordMutationsProps<T> {
+  FormFields: React.FC<FormFieldsProps<T>>
+  activeRecord: T
+  apiPath: string
+  callback: Function
 }
 
 export interface RecordNewProps<T> {

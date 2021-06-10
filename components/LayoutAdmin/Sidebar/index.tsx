@@ -1,42 +1,22 @@
-import SidebarLink from "./SidebarLink"
 import Link from "next/link"
 import { Page, usePage } from "../../../contexts/Page"
 
 const BASE_ADMIN_URL = "/admin"
-const links = [
-  { name: "Dashboard", path: `${BASE_ADMIN_URL}/` },
-  { name: "Category", path: `${BASE_ADMIN_URL}/category` },
-  { name: "Story", path: `${BASE_ADMIN_URL}/story` },
-  { name: "Chap", path: `${BASE_ADMIN_URL}/chap` }
-]
+
 const Sidebar = () => {
   const { page, setPage } = usePage()
 
   const pageLink = (pageName: Page) => {
-    const path = `${BASE_ADMIN_URL}/${pageName.toLowerCase()}`
     return (
       <span
-        className={`${
-          pageName === page
-            ? "bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100"
-            : "border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
-        } flex items-center duration-200 mt-4 py-2 px-6 border-l-4`}
+        className={`${pageName === page
+          ? "bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100"
+          : "border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
+          } flex items-center duration-200 mt-4 py-2 px-6 border-l-4`}
         onClick={() => setPage(pageName)}
       >
         {pageName}
       </span>
-      // <Link href={path}>
-      //   <a
-      //     className={`${
-      //       pageName === page
-      //         ? "bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100"
-      //         : "border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
-      //     } flex items-center duration-200 mt-4 py-2 px-6 border-l-4`}
-      //     onClick={() => setPage(pageName)}
-      //   >
-      //     <span className="mx-4">{pageName}</span>
-      //   </a>
-      // </Link>
     )
   }
 
