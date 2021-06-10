@@ -1,8 +1,7 @@
 import { Record } from "../../../interfaces/RecordEntities";
 import { TableProps } from "../../../interfaces/PagesProps";
 
-export const Table = <T extends Record>({ records, setActiveRecord }: TableProps<T>) => {
-  console.log({ setActiveRecord })
+export const Table = <T extends Record>({ records, setActiveRecord, ListItem }: TableProps<T>) => {
   return (
     <table className="min-w-full">
       <thead>
@@ -28,7 +27,7 @@ export const Table = <T extends Record>({ records, setActiveRecord }: TableProps
 
             <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">
               <div className="text-sm leading-5 text-gray-900">
-                {record.title}
+                <ListItem record={record} />
               </div>
             </td>
 

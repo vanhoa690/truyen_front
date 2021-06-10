@@ -15,20 +15,21 @@ export interface ListItemProps<T> {
 export interface RecordIndexProps<T> {
   apiPath: string
   apiOptions: {}
-  // ListItem: React.FC<ListItemProps<T>>
+  ListItem: React.FC<ListItemProps<T>>
   FormFields: React.FC<FormFieldsProps<T>>
   emptyRecord: T
 }
 export interface RecordListProps<T> {
-  // ListItem: React.FC<ListItemProps<T>>
+  ListItem: React.FC<ListItemProps<T>>
   records: T[]
   emptyRecord: T
   activeRecord: T
   setActiveRecord: Function
-  // loading: boolean;
-  // error?: AxiosError;
+  loading: boolean
+  error?: AxiosError
 }
 export interface TableProps<T> {
+  ListItem: React.FC<ListItemProps<T>>
   records: T[]
   setActiveRecord: Function
 }
@@ -60,4 +61,16 @@ export interface RecordFormProps<T> {
   activeRecord: T
   submitAction: Action<T>
   success?: boolean
+}
+
+export interface InputProps {
+  name: string
+  value: string
+  handleChange: (event: React.ChangeEvent<IChangeElement>) => void
+}
+
+export interface SelectProps {
+  name: string
+  value: number | string | undefined
+  handleChange: (event: React.ChangeEvent<IChangeElement>) => void
 }

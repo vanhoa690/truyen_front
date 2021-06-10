@@ -1,7 +1,7 @@
 import { useState, useRef } from "react"
 import * as Yup from "yup"
 import { FastField, Form, Formik } from "formik"
-import helper from "../../helper"
+import helper from "../../../helper"
 interface Props {
   title: string
   name: string

@@ -10,7 +10,7 @@ export const RecordNew = <T extends Record>({
 }: RecordNewProps<T>) => {
   return (
     <>
-
+      <h2>Add</h2>
       <RecordForm
         FormFields={FormFields}
         activeRecord={activeRecord}

@@ -7,8 +7,8 @@
 // import Widgets from '../components/Widgets'
 // import Footer from '../components/Footer'
 
-import Layout from "../../../components/Layout";
-import Chap from "../../../components/Chap";
+import Layout from "../../../components/Website/Layout";
+import Chap from "../../../components/Website/Chap";
 
 const ChapPage = () => {
   return (

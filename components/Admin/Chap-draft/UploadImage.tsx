@@ -1,7 +1,7 @@
 // import Card from "./Card"
 // import { ErrorMessage } from "formik"
 import { useState, useRef } from "react"
-import helper from "../../helper";
+import helper from "../../../helper";
 interface Props {
   title: string
   name: string

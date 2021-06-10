@@ -3,19 +3,19 @@ export interface Record {
 }
 export interface Category extends Record {
   id?: number
-  title: string
-  desc: string
+  name: string
+  description: string
   stories?: Story[]
 }
 export interface Story extends Record {
   id?: number
-  title: string
-  desc: string
+  name: string
+  description: string
   category?: Category | null
 }
 export interface Chap extends Record {
   id?: number
-  title: string
-  desc: string
+  name: string
+  description: string
   story?: Story | null
 }

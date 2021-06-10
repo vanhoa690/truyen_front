@@ -1,9 +1,9 @@
-import { Category } from '../../../interfaces/RecordEntities';
+import { Story } from '../../../interfaces/RecordEntities';
 import { ListItemProps } from '../../../interfaces/PagesProps';
 
-type IProps = ListItemProps<Category>
+type IProps = ListItemProps<Story>
 
-export const CategoryListItem: React.FC<IProps> = ({
+export const StoryListItem: React.FC<IProps> = ({
   record
 }) => {
   return (

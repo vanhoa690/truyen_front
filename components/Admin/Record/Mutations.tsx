@@ -4,8 +4,8 @@ import { RecordMutationsProps } from "../../../interfaces/PagesProps";
 import { RecordNew } from "./New";
 import { RecordEdit } from "./Edit";
 import { useMutation } from "../../../hooks/useMutation";
-// import { Status } from "../../components/Status";
-// import { RecordError } from "../../components/RecordError";
+import { Status } from "./Status";
+import { RecordError } from "./RecordError";
 
 export const RecordMutations = <T extends Record>({
   FormFields,
@@ -22,13 +22,7 @@ export const RecordMutations = <T extends Record>({
   }, [activeRecord, setError]);
   return (
     <>
-      {/* <RecordNew
-        FormFields={FormFields}
-        activeRecord={activeRecord}
-        create={create}
-        remove={remove}
-        success={success}
-      /> */}
+      {error && <RecordError error={error} />}
       {activeRecord.id ? (
         <RecordEdit
           FormFields={FormFields}
@@ -46,27 +40,7 @@ export const RecordMutations = <T extends Record>({
           success={success}
         />
       )}
+      {processing && <Status text="Processing..." />}
     </>
-    // <div className="mutations">
-    //   {error && <RecordError error={error} />}
-    //   {activeRecord.id ? (
-    //     <RecordEdit
-    //       FormFields={FormFields}
-    //       activeRecord={activeRecord}
-    //       update={update}
-    //       remove={remove}
-    //       success={success}
-    //     />
-    //   ) : (
-    //     <RecordNew
-    //       FormFields={FormFields}
-    //       activeRecord={activeRecord}
-    //       create={create}
-    //       remove={remove}
-    //       success={success}
-    //     />
-    //   )}
-    //   {processing && <Status text="Processing..." />}
-    // </div>
   );
 };

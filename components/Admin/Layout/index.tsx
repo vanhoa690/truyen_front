@@ -1,15 +1,14 @@
 import Head from "next/head"
 import Header from "./Header"
 import Sidebar from "./Sidebar"
-import { Page, usePage } from "../../contexts/Page"
-import CategoryPage from "../../components/Admin/Category"
-import StoryPage from "../../components/Admin/Story"
-import ChapPage from "../../components/Admin/Chap"
+import { Page, usePage } from "../../../contexts/Page"
+import CategoryPage from "../Category"
+import StoryPage from "../Story"
+import ChapPage from "../Chap-draft"
 
 const Layout = () => {
   const { page } = usePage();
   const renderSwitch = () => {
-    console.log({ page })
     switch (page) {
       case Page.Category:
         return <CategoryPage />;

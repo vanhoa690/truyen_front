@@ -1,19 +1,19 @@
 import { Category } from "../../../interfaces/RecordEntities";
 import { RecordIndex } from "../Record";
-// import { CategoryListItem } from "./ListItem";
+import { CategoryListItem } from "./ListItem";
 import { CategoryFormFields } from "./FormFields";
 
 
 const CategoryPage: React.FC = () => {
   const apiOptions = {};
   const emptyRecord = {
-    title: "",
-    desc: "",
+    name: "",
+    description: "",
   };
 
   return (
     <RecordIndex<Category>
-      // ListItem={CategoryListItem}
+      ListItem={CategoryListItem}
       apiPath="category"
       apiOptions={apiOptions}
       FormFields={CategoryFormFields}

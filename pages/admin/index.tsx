@@ -1,13 +1,12 @@
-import LayoutAdmin from "../../components/LayoutAdmin"
-// import Dashboard from "../../components/Admin/Dashboard"
 import { PageStore } from "../../contexts/Page"
+import LayoutAdmin from "../../components/Admin/Layout"
+// import Dashboard from "../../components/Admin/Dashboard"
 
 const DashboardPage = () => {
 
   return (
     <PageStore>
-      <LayoutAdmin>
-      </LayoutAdmin>
+      <LayoutAdmin />
     </PageStore>
   )
 }
