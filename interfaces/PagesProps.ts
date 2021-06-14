@@ -69,8 +69,9 @@ export interface InputProps {
   handleChange: (event: React.ChangeEvent<IChangeElement>) => void
 }
 
-export interface SelectProps {
+export interface SelectProps<T> {
   name: string
   value: number | string | undefined
+  options: T[]
   handleChange: (event: React.ChangeEvent<IChangeElement>) => void
 }

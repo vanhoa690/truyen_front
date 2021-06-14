@@ -15,7 +15,7 @@ const StoryPage: React.FC = () => {
   return (
     <RecordIndex<Story>
       ListItem={StoryListItem}
-      apiPath="story"
+      apiPath="stories"
       apiOptions={apiOptions}
       FormFields={StoryFormFields}
       emptyRecord={emptyRecord}

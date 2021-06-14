@@ -28,7 +28,7 @@ export const RecordForm = <T extends Record>({
           className="px-6 py-3 bg-gray-600 rounded-md text-white font-medium tracking-wide hover:bg-gray-500 mt-6"
         >
           Add
-            </button>
+        </button>
       </form>
     </div>
   );

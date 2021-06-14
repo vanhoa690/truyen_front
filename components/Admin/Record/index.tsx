@@ -12,18 +12,6 @@ export const RecordIndex = <T extends Record>({
   FormFields,
   emptyRecord,
 }: RecordIndexProps<T>) => {
-  // const records = [
-  //   {
-  //     id: 1,
-  //     title: "Title 1",
-  //     desc: "Desx 1"
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Title 2",
-  //     desc: "Desx 2"
-  //   },
-  // ]
   const { records, setVersion, loading, error } = useFetch<T>(
     apiPath,
     apiOptions

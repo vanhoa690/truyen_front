@@ -14,7 +14,7 @@ const ChapPage: React.FC = () => {
   return (
     <RecordIndex<Chap>
       ListItem={ChapListItem}
-      apiPath="chap"
+      apiPath="chaps"
       apiOptions={apiOptions}
       FormFields={ChapFormFields}
       emptyRecord={emptyRecord}

@@ -11,11 +11,13 @@ export interface Story extends Record {
   id?: number
   name: string
   description: string
-  category?: Category | null
+  category?: string | null
+  // category?: Category | null
 }
 export interface Chap extends Record {
   id?: number
   name: string
   description: string
-  story?: Story | null
+  story?: string | null
+  // story?: Story | null
 }

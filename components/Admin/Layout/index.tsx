@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar"
 import { Page, usePage } from "../../../contexts/Page"
 import CategoryPage from "../Category"
 import StoryPage from "../Story"
-import ChapPage from "../Chap-draft"
+import ChapPage from "../Chap"
 
 const Layout = () => {
   const { page } = usePage();

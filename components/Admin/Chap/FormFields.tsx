@@ -1,5 +1,6 @@
+import { useFetch } from '../../../hooks/useFetch';
 import { FormFieldsProps } from "../../../interfaces/PagesProps"
-import { Chap } from "../../../interfaces/RecordEntities"
+import { Story, Chap } from "../../../interfaces/RecordEntities"
 import { Select } from "../FormField"
 import { Input } from "../FormField"
 import { Textarea } from "../FormField"
@@ -12,12 +13,12 @@ export const ChapFormFields: React.FC<IProps> = (
     handleChange
   }
 ) => {
-
+  const storiesFetch = useFetch<Story>('stories')
   return (
     <>
-      <Select name={'category'} value={formState.story ? formState.story.id : ''} handleChange={handleChange} />
-      <Input name={'title'} value={formState.name} handleChange={handleChange} />
-      <Textarea name={'desc'} value={formState.description} handleChange={handleChange} />
+      <Select<Story> name={'story'} value={formState.story ? formState.story : ''} options={storiesFetch.records} handleChange={handleChange} />
+      <Input name={'name'} value={formState.name} handleChange={handleChange} />
+      <Textarea name={'description'} value={formState.description} handleChange={handleChange} />
     </>
   )
 }

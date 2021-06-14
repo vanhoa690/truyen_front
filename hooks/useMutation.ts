@@ -12,7 +12,9 @@ export const useMutation = <T extends Record>(
   const [success, setSuccess] = useState<boolean>()
   const [error, setError] = useState<AxiosError>()
 
-  const url = `${process.env.REACT_APP_API}/${path}`
+  // const url = `${process.env.REACT_APP_API}/${path}`
+  const url = `${process.env.url_api}/${path}`
+
   const wrap = (fn: Action<T>) => {
     return async (record: T) => {
       setProcessing(true)

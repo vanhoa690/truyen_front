@@ -14,7 +14,7 @@ const CategoryPage: React.FC = () => {
   return (
     <RecordIndex<Category>
       ListItem={CategoryListItem}
-      apiPath="category"
+      apiPath="categories"
       apiOptions={apiOptions}
       FormFields={CategoryFormFields}
       emptyRecord={emptyRecord}

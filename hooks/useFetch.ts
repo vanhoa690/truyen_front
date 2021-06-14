@@ -10,14 +10,13 @@ export const useFetch = <T extends Record>(path: string, options?: {}) => {
 
   // const url = `${process.env.REACT_APP_API}/${path}`
   const url = `${process.env.url_api}/${path}`
-  console.log({ url })
+
   useEffect(() => {
     const callFetchFunction = async () => {
       setLoading(true)
       try {
         const res = await axios.get<T[]>(url, { params: options })
-        // console.log(res.data.categories)
-        setRecords([])
+        setRecords(res.data)
       } catch (error) {
         setError(error as AxiosError)
       }
