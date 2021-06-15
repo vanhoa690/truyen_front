@@ -13,18 +13,15 @@ const ChapPage = ({ chap }) => {
 export default ChapPage
 
 export const getServerSideProps = async context => {
-  // console.log(context)
-  const chap = await fetch(
-    `http://localhost:5000/api/chaps/${context.query.chap}`
-  ).then(res => res.json())
-  // const chaps = await fetch("http://localhost:5000/api/chaps").then(res =>
-  //   res.json()
-  // )
+  const baseUrl = `${process.env.url_api}`
+  const chapUrl = "chaps"
+  const chapId = context.query.chap
+  const chap = await fetch(`${baseUrl}/${chapUrl}/${chapId}?_page=1&_limit=4`)
+    .then(res => res.json())
+    .then(res => res.data)
   return {
     props: {
       chap
-      // story,
-      // chaps
     }
   }
 }

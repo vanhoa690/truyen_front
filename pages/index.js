@@ -17,16 +17,17 @@ const HomePage = ({ categories, stories, storiesPopular }) => {
 export default HomePage
 
 export const getServerSideProps = async () => {
+  const baseUrl = `${process.env.url_api}`
+  const storyUrl = "stories"
+  const categoryUrl = "categories"
   const storiesPopular = await fetch(
-    "http://localhost:5000/api/stories?popular=true"
+    `${baseUrl}/${storyUrl}?popular=true`
   ).then(res => res.json())
-  const stories = await fetch(
-    "http://localhost:5000/api/stories?_page=1&_limit=4"
-  )
+  const stories = await fetch(`${baseUrl}/${storyUrl}?_page=1&_limit=4`)
     .then(res => res.json())
     .then(res => res.data)
-  const categories = await fetch("http://localhost:5000/api/categories").then(
-    res => res.json()
+  const categories = await fetch(`${baseUrl}/${categoryUrl}`).then(res =>
+    res.json()
   )
   return {
     props: {
