@@ -1,9 +1,9 @@
 import Head from "next/head"
 import Header from "./Header"
-import Banner from "./Banner"
-import ProductFeed from "./ProductFeed"
+// import Banner from "./Banner"
+import HomeFeed from "./HomeFeed"
 
-const Home = ({ categories, stories }) => {
+const Home = ({ categories, stories, storiesPopular }) => {
   return (
     <div className="bg-gray-100">
       <Head>
@@ -13,9 +13,9 @@ const Home = ({ categories, stories }) => {
       <Header categories={categories} />
 
       <main className="max-w-screen-2xl mx-auto">
-        <Banner />
+        {/* <Banner /> */}
 
-        <ProductFeed stories={stories} />
+        <HomeFeed stories={stories} storiesPopular={storiesPopular} />
       </main>
     </div>
   )
