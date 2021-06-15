@@ -8,7 +8,8 @@ module.exports = {
       "firebasestorage.googleapis.com",
       "fakestoreapi.com",
       "www.google.co.uk",
-      "i.ibb.co"
+      "i.ibb.co",
+      "picsum.photos"
     ]
   },
   env: {

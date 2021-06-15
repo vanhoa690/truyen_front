@@ -73,5 +73,6 @@ export interface SelectProps<T> {
   name: string
   value: number | string | undefined
   options: T[]
+  OptionItem: React.FC<ListItemProps<T>>
   handleChange: (event: React.ChangeEvent<IChangeElement>) => void
 }
