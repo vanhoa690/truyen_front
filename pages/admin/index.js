@@ -1,20 +1,13 @@
-// import { PageStore } from "../../contexts/Page"
-// import LayoutAdmin from "../../components/Admin/Layout"
-import Dashboard from "../../components/Dashboard/table"
+import Dashboard from "../../components/Dashboard"
 import "bulma/css/bulma.min.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 
 const DashboardPage = ({ chaps }) => {
-  return (
-    <Dashboard data={chaps} />
-    // <PageStore>
-    // <LayoutAdmin />
-    // </PageStore>
-  )
+  return <Dashboard data={chaps} />
 }
 export default DashboardPage
 
-export const getServerSideProps = async context => {
+export const getServerSideProps = async () => {
   const baseUrl = `${process.env.url_api}`
   const chapUrl = "chaps"
 

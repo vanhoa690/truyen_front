@@ -38,11 +38,7 @@ const Header = ({ categories, categoryId }) => {
           <p
             className="link"
             key={category.id}
-            onClick={() =>
-              router.push(`/?categoryId=${category.id}`, {
-                shallow: true
-              })
-            }
+            onClick={() => router.push(`/?categoryId=${category.id}`)}
           >
             {category.title}
           </p>

@@ -1,11 +1,6 @@
 import Home from "../components/Website/Home"
-// import { useEffect } from "react"
 
 const HomePage = ({ categories, stories, storiesPopular, categoryId }) => {
-  // let storiesUpdate = stories
-  // useEffect(() => {
-  //   storiesUpdate = stories
-  // }, [stories])
   return (
     <Home
       categories={categories}
@@ -24,25 +19,39 @@ export const getServerSideProps = async ({ query: { categoryId = "All" } }) => {
   let stories = []
   let storiesPopular = []
   if (categoryId === "All") {
-    const fetchStory = fetch(`${baseUrl}/${storyUrl}`)
-    const fetchStoryPopular = fetch(`${baseUrl}/${storyUrl}?popular=true`)
-    Promise.all([fetchStory, fetchStoryPopular])
-      .then(results => Promise.all(results.map(r => r.json())))
-      .then(result => {
-        ;[stories, storiesPopular] = result
-      })
+    stories = await fetch(`${baseUrl}/${storyUrl}`)
+      .then(res => res.json())
       .catch(error => console.log(`Error in promises ${error}`))
+    storiesPopular = await fetch(`${baseUrl}/${storyUrl}?popular=true`)
+      .then(res => res.json())
+      .catch(error => console.log(`Error in promises ${error}`))
+    // const fetchStory = fetch(`${baseUrl}/${storyUrl}`)
+    // const fetchStoryPopular = fetch(`${baseUrl}/${storyUrl}?popular=true`)
+    // Promise.all([fetchStory, fetchStoryPopular])
+    //   .then(results => Promise.all(results.map(r => r.json())))
+    //   .then(result => {
+    //     ;[stories, storiesPopular] = result
+    //   })
+    //   .catch(error => console.log(`Error in promises ${error}`))
   } else {
-    const fetchStory = fetch(`${baseUrl}/${storyUrl}?category=${categoryId}`)
-    const fetchStoryPopular = fetch(
+    stories = await fetch(`${baseUrl}/${storyUrl}?category=${categoryId}`)
+      .then(res => res.json())
+      .catch(error => console.log(`Error in promises ${error}`))
+    storiesPopular = await fetch(
       `${baseUrl}/${storyUrl}?category=${categoryId}&popular=true`
     )
-    Promise.all([fetchStory, fetchStoryPopular])
-      .then(results => Promise.all(results.map(r => r.json())))
-      .then(result => {
-        ;[stories, storiesPopular] = result
-      })
+      .then(res => res.json())
       .catch(error => console.log(`Error in promises ${error}`))
+    // const fetchStory = fetch(`${baseUrl}/${storyUrl}?category=${categoryId}`)
+    // const fetchStoryPopular = fetch(
+    //   `${baseUrl}/${storyUrl}?category=${categoryId}&popular=true`
+    // )
+    // Promise.all([fetchStory, fetchStoryPopular])
+    //   .then(results => Promise.all(results.map(r => r.json())))
+    //   .then(result => {
+    //     ;[stories, storiesPopular] = result
+    //   })
+    //   .catch(error => console.log(`Error in promises ${error}`))
   }
   const categories = await fetch(`${baseUrl}/${categoryUrl}`)
     .then(res => res.json())
