@@ -18,7 +18,9 @@ export const getServerSideProps = async context => {
   const story = await fetch(`${baseUrl}/${storyUrl}/${storyId}`).then(res =>
     res.json()
   )
-  const chaps = await fetch(`${baseUrl}/${chapUrl}`).then(res => res.json())
+  const chaps = await fetch(`${baseUrl}/${chapUrl}?story=${story.id}`).then(
+    res => res.json()
+  )
   return {
     props: {
       categories,

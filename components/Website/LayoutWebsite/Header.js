@@ -2,11 +2,8 @@ import Image from "next/image"
 import { MenuIcon, SearchIcon } from "@heroicons/react/outline"
 import { useRouter } from "next/router"
 
-const Header = ({ categories }) => {
+const Header = ({ categories, categoryId }) => {
   const router = useRouter()
-  const handleClick = catId => {
-    console.log(catId)
-  }
 
   return (
     <header>
@@ -33,7 +30,7 @@ const Header = ({ categories }) => {
 
       {/* bottom nav */}
       <div className="flex items-center space-x-3 p-2 pl-6 bg_amazon_blue-light text-while text-sm">
-        <p className="link flex items-center">
+        <p className="link flex items-center" onClick={() => router.push("/")}>
           <MenuIcon className="h-6 mr-1" />
           All
         </p>
@@ -41,7 +38,11 @@ const Header = ({ categories }) => {
           <p
             className="link"
             key={category.id}
-            onClick={() => handleClick(category.id)}
+            onClick={() =>
+              router.push(`/?categoryId=${category.id}`, {
+                shallow: true
+              })
+            }
           >
             {category.title}
           </p>

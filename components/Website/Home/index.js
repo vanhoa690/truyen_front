@@ -3,7 +3,7 @@ import LayoutWebsite from "Website/LayoutWebsite"
 
 const domainName = "| Truyennho.com"
 
-const Story = ({ categories, stories, storiesPopular }) => {
+const Story = ({ categories, stories, storiesPopular, categoryId }) => {
   const SEO = {
     title: `${categories[0].titleSeo} ${domainName}`,
     description: categories[0].descSeo,
@@ -14,7 +14,7 @@ const Story = ({ categories, stories, storiesPopular }) => {
     }
   }
   return (
-    <LayoutWebsite SEO={SEO} categories={categories}>
+    <LayoutWebsite SEO={SEO} categories={categories} categoryId={categoryId}>
       <HomeFeed stories={stories} storiesPopular={storiesPopular} />
     </LayoutWebsite>
   )

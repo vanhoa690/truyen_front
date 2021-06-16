@@ -4,7 +4,7 @@ import { useRouter } from "next/router"
 import ChapModal from "./ChapModal"
 
 const MAX_RATING = 5
-const MIN_RATING = 1
+const MIN_RATING = 4
 const ChapItem = ({ id, title, description, storyId }) => {
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1) + MIN_RATING)

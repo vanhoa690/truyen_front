@@ -18,7 +18,14 @@ const HomeItem = ({ id, title, description, category, image }) => {
         {category}
       </p>
 
-      <Image src={image} width={500} height={400} objectFit="contain" />
+      <Image
+        src={image}
+        width="full"
+        height="full"
+        layout="responsive"
+        objectFit="contain"
+        alt={title}
+      />
 
       <h4 className="my-3">{title}</h4>
 

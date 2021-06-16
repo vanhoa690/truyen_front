@@ -18,7 +18,9 @@ export const getServerSideProps = async context => {
   const categories = await fetch(`${baseUrl}/${categoryUrl}`).then(res =>
     res.json()
   )
-  const chaps = await fetch(`${baseUrl}/${chapUrl}`).then(res => res.json())
+  const chaps = await fetch(`${baseUrl}/${chapUrl}?story=${storyId}`).then(
+    res => res.json()
+  )
   const chap = await fetch(`${baseUrl}/${chapUrl}/${chapId}`).then(res =>
     res.json()
   )

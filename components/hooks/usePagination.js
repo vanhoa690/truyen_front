@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const usePagination = initialState => {
   const { itemsPerPage, data, startFrom } = initialState
+
   const perPage = itemsPerPage ? itemsPerPage : 10
   const pages = Math.ceil(data.length / perPage)
   const pagination = []
@@ -10,6 +11,13 @@ const usePagination = initialState => {
   )
   const [slicedData, setSlicedData] = useState(
     [...data].slice((currentPage - 1) * perPage, currentPage * perPage)
+  )
+  useEffect(
+    () =>
+      setSlicedData(
+        [...data].slice((currentPage - 1) * perPage, currentPage * perPage)
+      ),
+    [data]
   )
 
   let ellipsisLeft = false
