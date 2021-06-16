@@ -1,24 +1,23 @@
-import Head from "next/head"
-import Header from "./Header"
-// import Banner from "./Banner"
 import HomeFeed from "./HomeFeed"
+import LayoutWebsite from "Website/LayoutWebsite"
 
-const Home = ({ categories, stories, storiesPopular }) => {
+const domainName = "| Truyennho.com"
+
+const Story = ({ categories, stories, storiesPopular }) => {
+  const SEO = {
+    title: `${categories[0].titleSeo} ${domainName}`,
+    description: categories[0].descSeo,
+
+    openGraph: {
+      title: `${categories[0].titleSeo} ${domainName}`,
+      description: categories[0].descSeo
+    }
+  }
   return (
-    <div className="bg-gray-100">
-      <Head>
-        <title>Amazon</title>
-      </Head>
-
-      <Header categories={categories} />
-
-      <main className="max-w-screen-2xl mx-auto">
-        {/* <Banner /> */}
-
-        <HomeFeed stories={stories} storiesPopular={storiesPopular} />
-      </main>
-    </div>
+    <LayoutWebsite SEO={SEO} categories={categories}>
+      <HomeFeed stories={stories} storiesPopular={storiesPopular} />
+    </LayoutWebsite>
   )
 }
 
-export default Home
+export default Story

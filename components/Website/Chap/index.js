@@ -1,20 +1,25 @@
-import Head from "next/head"
-import Header from "./Header"
-import ChapInfo from "./ChapInfo"
+import ChapContent from "./ChapContent"
+import LayoutWebsite from "Website/LayoutWebsite"
 
-const Chap = ({ chap }) => {
+const domainName = "| Truyennho.com"
+const Chap = ({ categories, story, chaps, chap }) => {
+  const SEO = {
+    title: `${story.title} - ${chap.title} ${domainName}`,
+    description: `${story.title} - ${
+      chap.title
+    } ${domainName} ${chap.description.slice(0, 120)}`,
+
+    openGraph: {
+      title: `${story.title} - ${chap.title} ${domainName}`,
+      description: `${story.title} - ${
+        chap.title
+      } ${domainName} ${chap.description.slice(0, 120)}`
+    }
+  }
   return (
-    <div className="bg-gray-100">
-      <Head>
-        <title>Amazon</title>
-      </Head>
-
-      <Header />
-
-      <main className="max-w-screen-2xl mx-auto">
-        <ChapInfo chap={chap} />
-      </main>
-    </div>
+    <LayoutWebsite SEO={SEO} categories={categories}>
+      <ChapContent story={story} chaps={chaps} chap={chap} />
+    </LayoutWebsite>
   )
 }
 

@@ -5,7 +5,7 @@ import ChapModal from "./ChapModal"
 
 const MAX_RATING = 5
 const MIN_RATING = 1
-const ChapItem = ({ id, title, description }) => {
+const ChapItem = ({ id, title, description, storyId }) => {
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1) + MIN_RATING)
   )
@@ -27,20 +27,20 @@ const ChapItem = ({ id, title, description }) => {
         </div>
 
         <p className="text-xs my-2 line-clamp-2">{description}</p>
-
-        <button onClick={() => setShowModal(true)} className="mt-auto button">
-          Read Now
-        </button>
-        <button
-          onClick={() =>
-            router.push(
-              "/eed977c8-531d-4100-9f07-27206169b6ce/5fca806a-0b10-47a3-b131-1c8ace8bd83d"
-            )
-          }
-          className="mt-auto button"
-        >
-          Read More
-        </button>
+        <div className="flex justify-center">
+          <button
+            onClick={() => setShowModal(true)}
+            className="flex-grow mt-auto button mx-2"
+          >
+            Read Now
+          </button>
+          <button
+            onClick={() => router.push(`/${storyId}/${id}`)}
+            className="flex-grow mt-auto button mx-2"
+          >
+            Read More
+          </button>
+        </div>
       </div>
       <ChapModal
         showModal={showModal}

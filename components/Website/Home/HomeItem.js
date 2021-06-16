@@ -39,10 +39,7 @@ const HomeItem = ({ id, title, description, category, image }) => {
         </div>
       )}
 
-      <button
-        onClick={() => router.push("/eed977c8-531d-4100-9f07-27206169b6ce")}
-        className="mt-auto button"
-      >
+      <button onClick={() => router.push(`${id}`)} className="mt-auto button">
         Read Now
       </button>
     </div>

@@ -1,14 +1,7 @@
-// import Layout from "../../components/Layout";
-// import Story from "../../components/Story";
 import Story from "../../components/Website/Story"
 
-const StoryPage = ({ story, chaps }) => {
-  return (
-    // <h1>Story</h1>
-    // <Layout>
-    <Story story={story} chaps={chaps} />
-    // </Layout>
-  )
+const StoryPage = ({ categories, story, chaps }) => {
+  return <Story story={story} chaps={chaps} categories={categories} />
 }
 export default StoryPage
 
@@ -17,12 +10,18 @@ export const getServerSideProps = async context => {
   const storyUrl = "stories"
   const chapUrl = "chaps"
   const storyId = context.query.story
+  const categoryUrl = "categories"
+
+  const categories = await fetch(`${baseUrl}/${categoryUrl}`).then(res =>
+    res.json()
+  )
   const story = await fetch(`${baseUrl}/${storyUrl}/${storyId}`).then(res =>
     res.json()
   )
   const chaps = await fetch(`${baseUrl}/${chapUrl}`).then(res => res.json())
   return {
     props: {
+      categories,
       story,
       chaps
     }

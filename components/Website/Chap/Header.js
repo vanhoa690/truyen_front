@@ -1,18 +1,9 @@
 import Image from "next/image"
-import {
-  MenuIcon,
-  SearchIcon
-  // ShoppingCartIcon,
-} from "@heroicons/react/outline"
-// import { signIn, signOut, useSession } from "next-auth/client";
+import { MenuIcon, SearchIcon } from "@heroicons/react/outline"
 import { useRouter } from "next/router"
-// import { useSelector } from "react-redux";
-// import { selectItems } from "../app/basketSlice";
 
 const Header = () => {
-  // const [session] = useSession();
   const router = useRouter()
-  // const items = useSelector(selectItems);
   return (
     <header>
       <div className="flex items-center bg-amazon_blue p-1 flex-grow py-2">
@@ -36,31 +27,7 @@ const Header = () => {
         </div>
 
         {/* Right */}
-        <div className="text-white flex items-center text-xs space-x-6 px-4">
-          {/* <div onClick={session ? signOut : signIn} className="link">
-            <p>{session ? `Hello, ${session.user.name}` : "Sign In"}</p>
-            <p className="font-extrabold md:text-sm">Account & List</p>
-          </div> */}
-          {/* <div
-            onClick={() => session && router.push("/order")}
-            className="link"
-          >
-            <p>Returns</p>
-            <p className="font-extrabold md:text-sm">Orders</p>
-          </div> */}
-          {/* <div
-            onClick={() => router.push("/checkout")}
-            className="relative link flex items-center"
-          >
-            <span className="absolute right-0 top-0 md:right-10 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold">
-              {items.length}
-            </span>
-            <ShoppingCartIcon className="h-10" />
-            <p className="hidden md:inline font-extrabold md:text-sm mt-2">
-              Basket
-            </p>
-          </div> */}
-        </div>
+        <div className="text-white flex items-center text-xs space-x-6 px-4"></div>
       </div>
 
       {/* bottom nav */}
@@ -74,15 +41,6 @@ const Header = () => {
             {category.title}
           </p>
         ))} */}
-        {/* <p className="link">Prime Video</p>
-        <p className="link">Amazon Business</p>
-        <p className="link">Today's Deals</p>
-        <p className="link hidden lg:inline-flex">Electronics</p>
-        <p className="link hidden lg:inline-flex">Food & Grocery</p>
-        <p className="link hidden lg:inline-flex">Prime</p>
-        <p className="link hidden lg:inline-flex">Buy Again</p>
-        <p className="link hidden lg:inline-flex">Shopper Toolkit</p>
-        <p className="link hidden lg:inline-flex">Health & Personal Care</p> */}
       </div>
     </header>
   )

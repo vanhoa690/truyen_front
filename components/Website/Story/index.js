@@ -1,23 +1,24 @@
-import Head from "next/head"
-import Header from "./Header"
 import StoryInfo from "./StoryInfo"
 import ChapFeed from "./ChapFeed"
+import LayoutWebsite from "Website/LayoutWebsite"
 
-const Story = ({ story, chaps }) => {
+const domainName = "| Truyennho.com"
+
+const Story = ({ categories, story, chaps }) => {
+  const SEO = {
+    title: `${story.titleSeo} ${domainName}`,
+    description: story.descSeo,
+
+    openGraph: {
+      title: `${story.titleSeo} ${domainName}`,
+      description: story.descSeo
+    }
+  }
   return (
-    <div className="bg-gray-100">
-      <Head>
-        <title>Amazon</title>
-      </Head>
-
-      <Header />
-
-      <main className="max-w-screen-2xl mx-auto">
-        <StoryInfo story={story} />
-
-        <ChapFeed story={story} chaps={chaps} />
-      </main>
-    </div>
+    <LayoutWebsite SEO={SEO} categories={categories}>
+      <StoryInfo story={story} />
+      <ChapFeed story={story} chaps={chaps} />
+    </LayoutWebsite>
   )
 }
 

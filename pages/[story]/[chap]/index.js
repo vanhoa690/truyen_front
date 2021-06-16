@@ -1,26 +1,36 @@
-// import Layout from "../../components/Layout";
-// import Story from "../../components/Story";
 import Chap from "../../../components/Website/Chap"
 
-const ChapPage = ({ chap }) => {
+const ChapPage = ({ categories, story, chaps, chap }) => {
   return (
-    // <h1>Story</h1>
-    // <Layout>
-    <Chap chap={chap} />
-    // </Layout>
+    <Chap story={story} chaps={chaps} chap={chap} categories={categories} />
   )
 }
 export default ChapPage
 
 export const getServerSideProps = async context => {
   const baseUrl = `${process.env.url_api}`
+  const storyUrl = "stories"
   const chapUrl = "chaps"
   const chapId = context.query.chap
-  const chap = await fetch(`${baseUrl}/${chapUrl}/${chapId}?_page=1&_limit=4`)
-    .then(res => res.json())
-    .then(res => res.data)
+  const storyId = context.query.story
+  const categoryUrl = "categories"
+
+  const categories = await fetch(`${baseUrl}/${categoryUrl}`).then(res =>
+    res.json()
+  )
+  const chaps = await fetch(`${baseUrl}/${chapUrl}`).then(res => res.json())
+  const chap = await fetch(`${baseUrl}/${chapUrl}/${chapId}`).then(res =>
+    res.json()
+  )
+  const story = await fetch(`${baseUrl}/${storyUrl}/${storyId}`).then(res =>
+    res.json()
+  )
+  // .then(res => res.data)
   return {
     props: {
+      categories,
+      story,
+      chaps,
       chap
     }
   }
