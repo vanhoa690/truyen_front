@@ -15,9 +15,9 @@ export const getServerSideProps = async context => {
   const { categories, story, chaps } = await useFetch(initialState)
   return {
     props: {
-      categories,
-      story,
-      chaps
+      categories: categories || [],
+      story: story || {},
+      chaps: chaps || []
     }
   }
 }

@@ -2,18 +2,15 @@ import StoryInfo from "./StoryInfo"
 import ChapFeed from "./ChapFeed"
 import LayoutWebsite from "Website/LayoutWebsite"
 
-const domainName = "| Truyennho.com"
-
 const Story = ({ categories, story, chaps }) => {
-  const SEO = {
-    title: `${story.titleSeo} ${domainName}`,
-    description: story.descSeo,
-
-    openGraph: {
-      title: `${story.titleSeo} ${domainName}`,
+  let SEO = null
+  if (story.titleSeo && story.descSeo) {
+    SEO = {
+      title: story.titleSeo,
       description: story.descSeo
     }
   }
+
   return (
     <LayoutWebsite SEO={SEO} categories={categories}>
       <StoryInfo story={story} />

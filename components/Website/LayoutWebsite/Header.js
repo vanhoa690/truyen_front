@@ -13,10 +13,9 @@ const Header = ({ categories }) => {
   useEffect(() => {
     const fetchStoriesSearch = async () => {
       try {
-        const params = {
+        const response = await storyApi.getAll({
           title_like: textSearch
-        }
-        const response = await storyApi.getAll(params)
+        })
         setStoriesSearch(response)
       } catch (error) {
         console.log("Failed to fetch stories list: ", error)

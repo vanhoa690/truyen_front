@@ -17,20 +17,20 @@ const HomeItem = ({ id, title, description, category, image }) => {
       <p className="absolute top-2 right-2 text-xs text-gray-800 ">
         {category}
       </p>
-
-      <Image
-        src={image}
-        width={1000}
-        height={800}
-        layout="responsive"
-        objectFit="contain"
-        alt={title}
-        quality={65}
-        loading="lazy"
-        placeholder="blur"
-        blurDataURL={image}
-      />
-
+      {image && (
+        <Image
+          src={image}
+          width={1000}
+          height={800}
+          layout="responsive"
+          objectFit="contain"
+          alt={title}
+          quality={65}
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL={image}
+        />
+      )}
       <h4 className="my-3">{title}</h4>
 
       <div className="flex">

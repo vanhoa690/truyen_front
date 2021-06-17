@@ -20,14 +20,10 @@ export const getServerSideProps = async context => {
 
   return {
     props: {
-      categories,
-      story,
-      chaps,
-      chap
-      // categories: categories || [],
-      // story: story || {},
-      // chaps: chaps || [],
-      // chap: chap || {}
+      categories: categories || [],
+      story: story || {},
+      chaps: chaps || [],
+      chap: chap || {}
     }
   }
 }
