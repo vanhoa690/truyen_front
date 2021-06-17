@@ -1,14 +1,16 @@
 import HomeItem from "./HomeItem"
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid"
 import usePagination from "../../hooks/usePagination"
+import Image from "next/image"
 
-const HomeFeed = ({ stories, storiesPopular }) => {
+const HomeFeed = ({ stories, storiesPopular, category }) => {
   const { slicedData, pagination, prevPage, nextPage, changePage } =
     usePagination({ itemsPerPage: 12, data: stories, startFrom: 1 })
+
   return (
     <div>
       <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 md:row-span-2">
           {storiesPopular
             .slice(0, 1)
             .map(({ id, title, description, category, image }) => (
@@ -24,7 +26,7 @@ const HomeFeed = ({ stories, storiesPopular }) => {
         </div>
 
         {storiesPopular
-          .slice(1, 3)
+          .slice(1, 5)
           .map(({ id, title, description, category, image }) => (
             <HomeItem
               key={id}
@@ -36,12 +38,23 @@ const HomeFeed = ({ stories, storiesPopular }) => {
             />
           ))}
       </div>
+      {category && (
+        <div className="md:col-span-full">
+          <Image
+            src={category.image}
+            width={1500}
+            height={300}
+            layout="responsive"
+            objectFit="contain"
+            alt={category.title}
+            quality={65}
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL={category.image}
+          />
+        </div>
+      )}
 
-      <img
-        className="md:col-span-full"
-        src="https://links.papareact.com/dyz"
-        alt=""
-      />
       {slicedData.length > 0 ? (
         <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {slicedData.map(({ id, title, description, category, image }) => (

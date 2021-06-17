@@ -10,11 +10,15 @@ const StoryInfo = ({ story }) => {
       <div className="lg:w-1/2">
         <Image
           src={story.image}
-          width="full"
-          height="full"
+          width={1000}
+          height={800}
           layout="responsive"
           objectFit="contain"
           alt={story.title}
+          quality={65}
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL={story.image}
         />
       </div>
 

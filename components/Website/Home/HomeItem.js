@@ -20,11 +20,15 @@ const HomeItem = ({ id, title, description, category, image }) => {
 
       <Image
         src={image}
-        width="full"
-        height="full"
+        width={1000}
+        height={800}
         layout="responsive"
         objectFit="contain"
         alt={title}
+        quality={65}
+        loading="lazy"
+        placeholder="blur"
+        blurDataURL={image}
       />
 
       <h4 className="my-3">{title}</h4>

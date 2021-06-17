@@ -59,9 +59,9 @@ export const getServerSideProps = async ({ query: { categoryId = "All" } }) => {
   return {
     props: {
       categoryId,
-      categories,
-      storiesPopular,
-      stories
+      categories: categories || [],
+      storiesPopular: storiesPopular || [],
+      stories: stories || []
     }
   }
 }
