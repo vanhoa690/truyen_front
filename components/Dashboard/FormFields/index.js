@@ -44,19 +44,19 @@ const initialState = {
     value: "",
     required: true
   },
-  //   image: {
-  //     value: {},
-  //     required: true,
-  //     file: true,
-  //     allowedTypes: ['jpg', 'jpeg', 'png', 'gif'],
-  //     maxFileSize: 1024
-  //   },
+  image: {
+    value: {},
+    required: true,
+    file: true,
+    allowedTypes: ["jpg", "jpeg", "png", "gif"],
+    maxFileSize: 1024
+  },
   description: {
     value: ""
   },
   terms: {
     value: true,
-    required: true,
+    // required: true,
     requiredMessage: "You need to accept our Terms and Conditions!"
   }
 }
@@ -78,7 +78,7 @@ const Form = () => {
       // data.append('password', formData.password.value);
       // data.append('gender', formData.gender.value);
       data.append("difficulty", formData.difficulty.value)
-      // data.append('image', formData.image.value);
+      data.append("image", formData.image.value)
       data.append("description", formData.description.value)
       data.append("terms", formData.terms.value)
       console.log("form can be submitted now...")
@@ -124,9 +124,18 @@ const Form = () => {
           label="Terms and conditions"
           id="terms"
           name="terms"
+          checked={formData.terms.value}
           value={formData.terms.value}
           onChange={changeHandler}
           error={errors.terms}
+        />
+        <Input
+          type="file"
+          label="Image"
+          name="image"
+          id="image"
+          onChange={changeHandler}
+          error={errors.image}
         />
         {/* <Input
           label="Email"
