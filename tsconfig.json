@@ -20,7 +20,8 @@
     "**/*.ts",
     "**/*.tsx",
     "components/**/*",
-    "helper"
-, "pages/admin/index.js"  ],
+    "helper",
+    "pages/**/*"
+  ],
   "exclude": ["node_modules"]
 }

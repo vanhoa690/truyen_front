@@ -5,7 +5,7 @@ import {
 } from "@heroicons/react/solid"
 import ChapItem from "./ChapItem"
 
-import usePagination from "../../hooks/usePagination"
+import usePagination from "../../../hooks/usePagination"
 
 const ChapFeed = ({ story, chaps }) => {
   const { slicedData, pagination, prevPage, nextPage, changePage } =

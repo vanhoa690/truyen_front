@@ -2,6 +2,7 @@ import Image from "next/image"
 import { MenuIcon, SearchIcon } from "@heroicons/react/outline"
 import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react"
+import storyApi from "../../../api/storyApi"
 
 const Header = ({ categories }) => {
   const [textSearch, setTextSearch] = useState("")
@@ -10,19 +11,24 @@ const Header = ({ categories }) => {
   const typingTimeoutRef = useRef(null)
 
   useEffect(() => {
-    const baseUrl = `${process.env.url_api}`
-    const storyUrl = "stories"
+    const fetchStoriesSearch = async () => {
+      try {
+        const params = {
+          title_like: textSearch
+        }
+        const response = await storyApi.getAll(params)
+        setStoriesSearch(response)
+      } catch (error) {
+        console.log("Failed to fetch stories list: ", error)
+      }
+    }
+
     if (textSearch !== "") {
       if (typingTimeoutRef.current) {
         clearTimeout(typingTimeoutRef.current)
       }
       typingTimeoutRef.current = setTimeout(() => {
-        fetch(`${baseUrl}/${storyUrl}?title_like=${textSearch}`)
-          .then(res => res.json())
-          .then(data => {
-            setStoriesSearch(data)
-          })
-          .catch(error => console.log(`Error in promises ${error}`))
+        fetchStoriesSearch()
       }, 300)
     } else {
       setStoriesSearch([])
@@ -30,10 +36,16 @@ const Header = ({ categories }) => {
     return () => clearTimeout(typingTimeoutRef.current)
   }, [textSearch])
 
+  const handleClick = storyId => {
+    router.push(`/${storyId}`)
+    setStoriesSearch([])
+    setTextSearch("")
+  }
+
   return (
     <header>
       <div className="flex items-center bg-amazon_blue p-1 flex-grow py-2">
-        <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
+        <div className="mt-2 flex items-center flex-grow-0">
           <Image
             src="https://links.papareact.com/f90"
             width={150}
@@ -49,15 +61,45 @@ const Header = ({ categories }) => {
             <input
               type="text"
               className="p-2 h-full w-6 flex-grow flex-shrink rounded-1-md focus:outline-none px-4"
+              value={textSearch}
               onChange={e => setTextSearch(e.target.value)}
             />
             <SearchIcon className="h-12 p-4" />
           </div>
           {textSearch !== "" && (
-            <ul className="absolute z-50 w-full mt-2 py-2 px-4 bg-amazon_blue rounded-md">
+            <ul className="absolute z-50 w-full mt-2 py-2 px-12 bg-amazon_blue rounded-md divide-y divide-light-blue-400">
               {storiesSearch.length > 0 ? (
-                storiesSearch.map(story => (
-                  <li className="text-white">{story.title}</li>
+                storiesSearch.slice(0, 6).map(story => (
+                  <li
+                    className="text-white py-2 cursor-pointer hover:bg-gray-600"
+                    onClick={() => handleClick(story.id)}
+                  >
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0 h-10 w-10">
+                        <Image
+                          src={story.image}
+                          width={50}
+                          height={50}
+                          layout="responsive"
+                          objectFit="contain"
+                          alt={story.title}
+                          quality={65}
+                          loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={story.image}
+                        />
+                      </div>
+
+                      <div className="ml-4">
+                        <div className="text-md leading-5 font-medium ">
+                          {story.title}
+                        </div>
+                        <div className="text-xs leading-5 line-clamp-1">
+                          {story.description}
+                        </div>
+                      </div>
+                    </div>
+                  </li>
                 ))
               ) : (
                 <li className="text-white">No story found</li>

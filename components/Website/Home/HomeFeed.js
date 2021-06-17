@@ -1,6 +1,6 @@
 import HomeItem from "./HomeItem"
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid"
-import usePagination from "../../hooks/usePagination"
+import usePagination from "../../../hooks/usePagination"
 import Image from "next/image"
 
 const HomeFeed = ({ stories, storiesPopular, category }) => {

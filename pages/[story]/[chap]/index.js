@@ -1,4 +1,5 @@
 import Chap from "../../../components/Website/Chap"
+import useFetch from "../../../hooks/useFetch"
 
 const ChapPage = ({ categories, story, chaps, chap }) => {
   return (
@@ -8,32 +9,25 @@ const ChapPage = ({ categories, story, chaps, chap }) => {
 export default ChapPage
 
 export const getServerSideProps = async context => {
-  const baseUrl = `${process.env.url_api}`
-  const storyUrl = "stories"
-  const chapUrl = "chaps"
-  const chapId = context.query.chap
   const storyId = context.query.story
-  const categoryUrl = "categories"
+  const chapId = context.query.chap
 
-  const categories = await fetch(`${baseUrl}/${categoryUrl}`).then(res =>
-    res.json()
-  )
-  const chaps = await fetch(`${baseUrl}/${chapUrl}?story=${storyId}`).then(
-    res => res.json()
-  )
-  const chap = await fetch(`${baseUrl}/${chapUrl}/${chapId}`).then(res =>
-    res.json()
-  )
-  const story = await fetch(`${baseUrl}/${storyUrl}/${storyId}`).then(res =>
-    res.json()
-  )
-  // .then(res => res.data)
+  const initialState = {
+    storyId,
+    chapId
+  }
+  const { categories, story, chaps, chap } = await useFetch(initialState)
+
   return {
     props: {
       categories,
       story,
       chaps,
       chap
+      // categories: categories || [],
+      // story: story || {},
+      // chaps: chaps || [],
+      // chap: chap || {}
     }
   }
 }
