@@ -1,7 +1,14 @@
 import HomeFeed from "./HomeFeed"
 import LayoutWebsite from "Website/LayoutWebsite"
 
-const Story = ({ categories, stories, storiesPopular, categoryId }) => {
+const Story = ({
+  categories,
+  stories,
+  storiesPopularAll,
+  storiesPopular,
+  categoryId,
+  chapsPopular
+}) => {
   const index = categories.findIndex(c => c.id === categoryId)
   let SEO = null
   let category = null
@@ -23,11 +30,16 @@ const Story = ({ categories, stories, storiesPopular, categoryId }) => {
   }
 
   return (
-    <LayoutWebsite SEO={SEO} categories={categories}>
+    <LayoutWebsite
+      SEO={SEO}
+      categories={categories}
+      storiesPopularAll={storiesPopularAll}
+    >
       <HomeFeed
         stories={stories}
         storiesPopular={storiesPopular}
         category={category}
+        chapsPopular={chapsPopular}
       />
     </LayoutWebsite>
   )

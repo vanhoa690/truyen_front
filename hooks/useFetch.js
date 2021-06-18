@@ -8,50 +8,79 @@ const useFetch = async (initialState = {}) => {
 
   let categories,
     stories,
+    storiesPopularAll,
     storiesPopular,
+    chapsPopular,
     chaps = []
   let story,
     chap = {}
 
   try {
     categories = await categoryApi.getAll()
-    story = await storyApi.get(storyId)
-    chaps = await chapApi.getAll({
-      story: storyId
-    })
-    chap = await chapApi.get(chapId)
   } catch (error) {
-    console.log("Failed to fetch: ", error)
+    console.log("Failed to fetch:categories ")
   }
-  if (categoryId && categoryId === "All") {
-    try {
-      stories = await storyApi.getAll()
-      storiesPopular = await storyApi.getAll({
-        popular: true
-      })
-    } catch (error) {
-      console.log("Failed to fetch: ", error)
+
+  try {
+    storiesPopularAll = await storyApi.getAll({
+      popular: true
+    })
+    chapsPopular = await chapApi.getAll({
+      popular: true
+    })
+  } catch (error) {
+    console.log("Failed to fetch:storiesPopularAll ")
+  }
+
+  if (categoryId) {
+    if (categoryId === "All") {
+      try {
+        stories = await storyApi.getAll()
+        storiesPopular = [...storiesPopularAll]
+        // const chapPopular
+      } catch (error) {
+        console.log("Failed to fetch:stories All ")
+      }
+    } else {
+      try {
+        stories = await storyApi.getAll({
+          category: categoryId
+        })
+        storiesPopular = await storyApi.getAll({
+          category: categoryId,
+          popular: true
+        })
+      } catch (error) {
+        console.log("Failed to fetch:stories - cateId ")
+      }
     }
-  } else {
+  }
+  if (storyId) {
     try {
-      stories = await storyApi.getAll({
-        category: categoryId
-      })
-      storiesPopular = await storyApi.getAll({
-        category: categoryId,
-        popular: true
+      story = await storyApi.get(storyId)
+      chaps = await chapApi.getAll({
+        story: storyId
       })
     } catch (error) {
-      console.log("Failed to fetch: ", error)
+      console.log("Failed to fetch:storyId ")
+    }
+  }
+  if (chapId) {
+    try {
+      chap = await chapApi.get(chapId)
+    } catch (error) {
+      console.log("Failed to fetch:chapId ")
     }
   }
 
   return {
     categories,
     stories,
+    storiesPopularAll,
     storiesPopular,
     story,
     chaps,
+    chapsPopular,
     chap
   }
 }

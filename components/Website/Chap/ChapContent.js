@@ -13,7 +13,7 @@ const ChapContent = ({ story, chaps, chap }) => {
         <CheckCircleIcon className="text-green-500 h-10" />
         <h1 className="text-3xl">
           <Link href={`/${story.id}`}>
-            <a>{story.title}</a>
+            <a className="hover:underline">{story.title}</a>
           </Link>{" "}
           - {chap.title}
         </h1>

@@ -5,7 +5,14 @@ import { useRouter } from "next/router"
 
 const MAX_RATING = 5
 const MIN_RATING = 4
-const HomeItem = ({ id, title, description, category, image }) => {
+const HomeItem = ({
+  id,
+  title,
+  description,
+  category,
+  image,
+  chapsPopular
+}) => {
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1) + MIN_RATING)
   )
@@ -31,7 +38,20 @@ const HomeItem = ({ id, title, description, category, image }) => {
           blurDataURL={image}
         />
       )}
-      <h4 className="my-3">{title}</h4>
+      {chapsPopular &&
+        chapsPopular.map(
+          chap =>
+            chap.story === id && (
+              <h4
+                className="mt-2 text-center link"
+                onClick={() => router.push(`/${id}/${chap.id}`)}
+              >
+                {chap.title}
+              </h4>
+            )
+        )}
+
+      <h4 className="my-3 link">{title}</h4>
 
       <div className="flex">
         {Array(rating)

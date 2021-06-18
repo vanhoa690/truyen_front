@@ -3,7 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid"
 import usePagination from "../../../hooks/usePagination"
 import Image from "next/image"
 
-const HomeFeed = ({ stories, storiesPopular, category }) => {
+const HomeFeed = ({ stories, storiesPopular, category, chapsPopular }) => {
   const { slicedData, pagination, prevPage, nextPage, changePage } =
     usePagination({ itemsPerPage: 12, data: stories, startFrom: 1 })
 
@@ -21,6 +21,7 @@ const HomeFeed = ({ stories, storiesPopular, category }) => {
                 description={description}
                 category={category}
                 image={image}
+                chapsPopular={chapsPopular}
               />
             ))}
         </div>
@@ -35,6 +36,7 @@ const HomeFeed = ({ stories, storiesPopular, category }) => {
               description={description}
               category={category}
               image={image}
+              chapsPopular={chapsPopular}
             />
           ))}
       </div>

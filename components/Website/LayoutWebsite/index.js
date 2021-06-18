@@ -1,8 +1,10 @@
 import { NextSeo } from "next-seo"
 import Header from "./Header"
+import Footer from "./Footer"
+
 const domainName = "| Truyennho.com"
 
-const LayoutWebsite = ({ children, SEO, categories }) => {
+const LayoutWebsite = ({ children, SEO, categories, storiesPopularAll }) => {
   let SEOInfo = {
     title: `${domainName}`,
     description: `${domainName}`,
@@ -30,6 +32,7 @@ const LayoutWebsite = ({ children, SEO, categories }) => {
         <Header categories={categories} />
 
         <main className="max-w-screen-2xl mx-auto">{children}</main>
+        <Footer categories={categories} storiesPopularAll={storiesPopularAll} />
       </div>
     </>
   )
