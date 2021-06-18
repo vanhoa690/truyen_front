@@ -13,7 +13,7 @@ const HomeFeed = ({ stories, storiesPopular, category, chapsPopular }) => {
         <div className="md:col-span-2 md:row-span-2">
           {storiesPopular
             .slice(0, 1)
-            .map(({ id, title, description, category, image }) => (
+            .map(({ id, title, description, category, image, popular }) => (
               <HomeItem
                 key={id}
                 id={id}
@@ -22,13 +22,14 @@ const HomeFeed = ({ stories, storiesPopular, category, chapsPopular }) => {
                 category={category}
                 image={image}
                 chapsPopular={chapsPopular}
+                popular={popular}
               />
             ))}
         </div>
 
         {storiesPopular
           .slice(1, 5)
-          .map(({ id, title, description, category, image }) => (
+          .map(({ id, title, description, category, image, popular }) => (
             <HomeItem
               key={id}
               id={id}
@@ -37,6 +38,7 @@ const HomeFeed = ({ stories, storiesPopular, category, chapsPopular }) => {
               category={category}
               image={image}
               chapsPopular={chapsPopular}
+              popular={popular}
             />
           ))}
       </div>
@@ -59,16 +61,19 @@ const HomeFeed = ({ stories, storiesPopular, category, chapsPopular }) => {
 
       {slicedData.length > 0 ? (
         <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {slicedData.map(({ id, title, description, category, image }) => (
-            <HomeItem
-              key={id}
-              id={id}
-              title={title}
-              description={description}
-              category={category}
-              image={image}
-            />
-          ))}
+          {slicedData.map(
+            ({ id, title, description, category, image, popular }) => (
+              <HomeItem
+                key={id}
+                id={id}
+                title={title}
+                description={description}
+                category={category}
+                image={image}
+                popular={popular}
+              />
+            )
+          )}
         </div>
       ) : (
         <h3 className="text-3xl p-12 text-center">No Story Found</h3>

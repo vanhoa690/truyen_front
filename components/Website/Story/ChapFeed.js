@@ -4,12 +4,13 @@ import {
   ChevronRightIcon
 } from "@heroicons/react/solid"
 import ChapItem from "./ChapItem"
-
+import { useRouter } from "next/router"
 import usePagination from "../../../hooks/usePagination"
 
-const ChapFeed = ({ story, chaps }) => {
+const ChapFeed = ({ story, chaps, genres }) => {
   const { slicedData, pagination, prevPage, nextPage, changePage } =
     usePagination({ itemsPerPage: 12, data: chaps, startFrom: 1 })
+  const router = useRouter()
 
   return (
     <div className="mt-5">
@@ -17,7 +18,30 @@ const ChapFeed = ({ story, chaps }) => {
         <CheckCircleIcon className="text-green-500 h-10" />
         <h1 className="text-3xl">Danh sách chương truyện {story.title}</h1>
       </div>
-
+      <div className="flex items-center justify-center space-x-2 mb-5">
+        {genres.length > 0 &&
+          genres.map(genre => (
+            <button
+              key={genre.id}
+              className="mt-auto button mx-2"
+              onClick={() => router.push(`/${story.id}/?genre=${genre.genre}`)}
+            >
+              {genre.title}
+            </button>
+          ))}
+        {/* <button
+          className="mt-auto button mx-2"
+          onClick={() => router.push(`/${story.id}/?genre=comic`)}
+        >
+          Read Comic
+        </button>
+        <button
+          className="mt-auto button mx-2"
+          onClick={() => router.push(`/${story.id}/?genre=anime`)}
+        >
+          Moive Anime
+        </button> */}
+      </div>
       <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {slicedData.map(({ id, title, description }) => (
           <ChapItem

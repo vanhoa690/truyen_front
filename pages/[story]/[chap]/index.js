@@ -1,14 +1,20 @@
 import Chap from "../../../components/Website/Chap"
 import useFetch from "../../../hooks/useFetch"
 
-const ChapPage = ({ categories, storiesPopularAll, story, chaps, chap }) => {
+const ChapPage = ({
+  categories,
+  storiesPopularAll,
+  story,
+  chapsRelated,
+  chap
+}) => {
   return (
     <Chap
       story={story}
-      chaps={chaps}
       chap={chap}
       categories={categories}
       storiesPopularAll={storiesPopularAll}
+      chapsRelated={chapsRelated}
     />
   )
 }
@@ -22,16 +28,15 @@ export const getServerSideProps = async context => {
     storyId,
     chapId
   }
-  const { categories, storiesPopularAll, story, chaps, chap } = await useFetch(
-    initialState
-  )
+  const { categories, storiesPopularAll, story, chapsRelated, chap } =
+    await useFetch(initialState)
 
   return {
     props: {
       categories: categories || [],
       storiesPopularAll: storiesPopularAll || [],
       story: story || {},
-      chaps: chaps || [],
+      chapsRelated: chapsRelated || [],
       chap: chap || {}
     }
   }

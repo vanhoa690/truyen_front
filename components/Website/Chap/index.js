@@ -1,7 +1,7 @@
 import ChapContent from "./ChapContent"
 import LayoutWebsite from "Website/LayoutWebsite"
 
-const Chap = ({ categories, storiesPopularAll, story, chaps, chap }) => {
+const Chap = ({ categories, storiesPopularAll, story, chapsRelated, chap }) => {
   let SEO = null
   if (story.title && chap.title && chap.description) {
     SEO = {
@@ -19,7 +19,7 @@ const Chap = ({ categories, storiesPopularAll, story, chaps, chap }) => {
       categories={categories}
       storiesPopularAll={storiesPopularAll}
     >
-      <ChapContent story={story} chaps={chaps} chap={chap} />
+      <ChapContent story={story} chap={chap} chapsRelated={chapsRelated} />
     </LayoutWebsite>
   )
 }

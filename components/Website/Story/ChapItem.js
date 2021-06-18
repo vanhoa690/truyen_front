@@ -3,13 +3,7 @@ import { useState } from "react"
 import { useRouter } from "next/router"
 import ChapModal from "./ChapModal"
 
-const MAX_RATING = 5
-const MIN_RATING = 4
 const ChapItem = ({ id, title, description, storyId }) => {
-  const [rating] = useState(
-    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1) + MIN_RATING)
-  )
-  // const dispatch = useDispatch();
   const router = useRouter()
   const [showModal, setShowModal] = useState(false)
 
@@ -19,11 +13,11 @@ const ChapItem = ({ id, title, description, storyId }) => {
         <h4 className="my-3">{title}</h4>
 
         <div className="flex">
-          {Array(rating)
-            .fill()
-            .map((_, i) => (
-              <StarIcon className="h-3 text-yellow-500" key={i} />
-            ))}
+          <StarIcon className="h-3 text-yellow-500" />
+          <StarIcon className="h-3 text-yellow-500" />
+          <StarIcon className="h-3 text-yellow-500" />
+          <StarIcon className="h-3 text-yellow-500" />
+          <StarIcon className="h-3 text-yellow-500" />
         </div>
 
         <p className="text-xs my-2 line-clamp-2">{description}</p>

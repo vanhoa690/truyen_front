@@ -2,15 +2,18 @@
 import categoryApi from "../api/categoryApi"
 import storyApi from "../api/storyApi"
 import chapApi from "../api/chapApi"
+import genreApi from "../api/genreApi"
 
 const useFetch = async (initialState = {}) => {
-  const { categoryId, storyId, chapId } = initialState
+  const { categoryId, storyId, chapId, genre } = initialState
 
   let categories,
     stories,
     storiesPopularAll,
     storiesPopular,
     chapsPopular,
+    genres,
+    chapsRelated,
     chaps = []
   let story,
     chap = {}
@@ -26,7 +29,9 @@ const useFetch = async (initialState = {}) => {
       popular: true
     })
     chapsPopular = await chapApi.getAll({
-      popular: true
+      popular: true,
+      _sort: "createdAt",
+      _order: "asc"
     })
   } catch (error) {
     console.log("Failed to fetch:storiesPopularAll ")
@@ -37,7 +42,6 @@ const useFetch = async (initialState = {}) => {
       try {
         stories = await storyApi.getAll()
         storiesPopular = [...storiesPopularAll]
-        // const chapPopular
       } catch (error) {
         console.log("Failed to fetch:stories All ")
       }
@@ -58,8 +62,12 @@ const useFetch = async (initialState = {}) => {
   if (storyId) {
     try {
       story = await storyApi.get(storyId)
+      genres = await genreApi.getAll()
       chaps = await chapApi.getAll({
-        story: storyId
+        story: storyId,
+        genre: genre || "comic",
+        _sort: "createdAt",
+        _order: "desc"
       })
     } catch (error) {
       console.log("Failed to fetch:storyId ")
@@ -68,6 +76,14 @@ const useFetch = async (initialState = {}) => {
   if (chapId) {
     try {
       chap = await chapApi.get(chapId)
+      const genre = chap.genre
+      const storyId = chap.story
+      chapsRelated = await chapApi.getAll({
+        story: storyId,
+        genre: genre || "comic",
+        _sort: "createdAt",
+        _order: "desc"
+      })
     } catch (error) {
       console.log("Failed to fetch:chapId ")
     }
@@ -80,7 +96,9 @@ const useFetch = async (initialState = {}) => {
     storiesPopular,
     story,
     chaps,
+    genres,
     chapsPopular,
+    chapsRelated,
     chap
   }
 }
