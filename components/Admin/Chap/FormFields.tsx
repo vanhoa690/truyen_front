@@ -1,9 +1,7 @@
 import { useFetch } from '../../../hooks/useFetch';
 import { FormFieldsProps } from "../../../interfaces/PagesProps"
 import { Story, Chap } from "../../../interfaces/RecordEntities"
-import { Select } from "../FormField"
-import { Input } from "../FormField"
-import { Textarea } from "../FormField"
+import { Input, Select, Textarea } from "../FormField"
 import { StoryOptionItem } from "./OptionItem"
 
 type IProps = FormFieldsProps<Chap>

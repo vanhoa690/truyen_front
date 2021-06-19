@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Page, usePage } from "../../../../contexts/Page"
+import { Page, usePage } from "../../../contexts/Page"
 
 const BASE_ADMIN_URL = "/admin"
 

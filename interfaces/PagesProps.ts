@@ -1,7 +1,7 @@
 import React from "react"
 import { AxiosError } from "axios"
-import { Action } from "../hooks/useMutation"
-import { IChangeElement } from "../hooks/useForm"
+import { Action } from "../components/Admin-daft/hooks/useMutation"
+import { IChangeElement } from "../components/Admin-daft/hooks/useForm"
 
 export interface FormFieldsProps<T> {
   formState: T

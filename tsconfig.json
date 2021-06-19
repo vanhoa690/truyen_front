@@ -21,7 +21,10 @@
     "**/*.tsx",
     "components/**/*",
     "helper",
-    "pages/**/*"
+    "pages/**/*",
+    "helper",
+    "interfaces",
+    "contexts"
   ],
   "exclude": ["node_modules"]
 }

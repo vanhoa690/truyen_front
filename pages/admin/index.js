@@ -1,20 +1,18 @@
-import Dashboard from "../../components/Dashboard"
-import "bulma/css/bulma.min.css"
-import "@fortawesome/fontawesome-free/css/all.min.css"
+import LayoutAdmin from "../../components/Admin/LayoutAdmin"
 
-const DashboardPage = ({ chaps }) => {
-  return <Dashboard data={chaps} />
+const AdminPage = () => {
+  return <LayoutAdmin />
 }
-export default DashboardPage
+export default AdminPage
 
-export const getServerSideProps = async () => {
-  const baseUrl = `${process.env.url_api}`
-  const chapUrl = "chaps"
+// export const getServerSideProps = async () => {
+//   const baseUrl = `${process.env.url_api}`
+//   const chapUrl = "chaps"
 
-  const chaps = await fetch(`${baseUrl}/${chapUrl}`).then(res => res.json())
-  return {
-    props: {
-      chaps
-    }
-  }
-}
+//   const chaps = await fetch(`${baseUrl}/${chapUrl}`).then(res => res.json())
+//   return {
+//     props: {
+//       chaps
+//     }
+//   }
+// }

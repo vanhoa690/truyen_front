@@ -9,13 +9,6 @@ const CategoryPage: React.FC = () => {
   const emptyRecord = {
     title: "",
     description: "",
-    slug: "",
-    titleSeo: "",
-    descSeo: "",
-    image: "",
-    visible: true,
-    // createdAt: 0,
-    // updatedAt: 0,
   };
 
   return (

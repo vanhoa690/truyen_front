@@ -7,9 +7,14 @@ import { StoryFormFields } from "./FormFields";
 const StoryPage: React.FC = () => {
   const apiOptions = {};
   const emptyRecord = {
-    name: "",
+    title: "",
+    slug: "",
+    category: '',
     description: "",
-    // category: null,
+    titleSeo: "",
+    descSeo: "",
+    image: "",
+    visible: true,
   };
 
   return (

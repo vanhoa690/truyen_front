@@ -5,6 +5,6 @@ type IProps = ListItemProps<Category>
 
 export const CategoryOptionItem: React.FC<IProps> = ({ record }) => {
   return (
-    <option key={record.id} value={record.id}>{record.name}</option>
+    <option key={record.id} value={record.id}>{record.title}</option>
   )
 }

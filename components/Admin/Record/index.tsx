@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Record } from "../../../interfaces/RecordEntities";
 import { RecordIndexProps } from "../../../interfaces/PagesProps";
-import { useFetch } from "../../../hooks/useFetch";
+import { useFetch } from "../../../hooks/useFetchAdmin";
 import { RecordList } from "./List";
 import { RecordMutations } from "./Mutations";
 
@@ -16,6 +16,7 @@ export const RecordIndex = <T extends Record>({
     apiPath,
     apiOptions
   );
+  console.log({ records })
   const [activeRecord, setActiveRecord] = useState<T>(emptyRecord);
   const callback = () => {
     setVersion(+new Date());
