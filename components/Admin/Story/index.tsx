@@ -1,21 +1,22 @@
-import { Story } from "../../../interfaces/RecordEntities";
-import { RecordIndex } from "../Record";
-import { StoryListItem } from "./ListItem";
-import { StoryFormFields } from "./FormFields";
-
+import { Story } from "../../../interfaces/RecordEntities"
+import { RecordIndex } from "../Record"
+import { StoryListItem } from "./ListItem"
+import { StoryFormFields } from "./FormFields"
 
 const StoryPage: React.FC = () => {
-  const apiOptions = {};
+  const apiOptions = {}
   const emptyRecord = {
     title: "",
     slug: "",
-    category: '',
+    category: "",
     description: "",
     titleSeo: "",
     descSeo: "",
     image: "",
     visible: true,
-  };
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
 
   return (
     <RecordIndex<Story>
@@ -25,7 +26,6 @@ const StoryPage: React.FC = () => {
       FormFields={StoryFormFields}
       emptyRecord={emptyRecord}
     />
-
   )
 }
 export default StoryPage

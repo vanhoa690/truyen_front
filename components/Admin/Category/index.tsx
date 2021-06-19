@@ -1,11 +1,10 @@
-import { Category } from "../../../interfaces/RecordEntities";
-import { RecordIndex } from "../Record";
-import { CategoryListItem } from "./ListItem";
-import { CategoryFormFields } from "./FormFields";
-
+import { Category } from "../../../interfaces/RecordEntities"
+import { RecordIndex } from "../Record"
+import { CategoryListItem } from "./ListItem"
+import { CategoryFormFields } from "./FormFields"
 
 const CategoryPage: React.FC = () => {
-  const apiOptions = {};
+  const apiOptions = {}
   const emptyRecord = {
     title: "",
     description: "",
@@ -14,9 +13,9 @@ const CategoryPage: React.FC = () => {
     descSeo: "",
     image: "",
     visible: true,
-    // createdAt: 0,
-    // updatedAt: 0,
-  };
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
 
   return (
     <RecordIndex<Category>
@@ -26,7 +25,6 @@ const CategoryPage: React.FC = () => {
       FormFields={CategoryFormFields}
       emptyRecord={emptyRecord}
     />
-
   )
 }
 export default CategoryPage

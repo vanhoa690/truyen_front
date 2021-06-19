@@ -1,7 +1,7 @@
 import React from "react"
 import { AxiosError } from "axios"
-import { Action } from "../components/Admin-daft/hooks/useMutation"
-import { IChangeElement } from "../components/Admin-daft/hooks/useForm"
+import { Action } from "../hooks/useMutation"
+import { IChangeElement } from "../hooks/useForm"
 
 export interface FormFieldsProps<T> {
   formState: T
@@ -64,8 +64,11 @@ export interface RecordFormProps<T> {
 }
 
 export interface InputProps {
+  label: string
   name: string
-  value: string
+  type?: string
+  value?: string
+  checked?: boolean
   handleChange: (event: React.ChangeEvent<IChangeElement>) => void
 }
 

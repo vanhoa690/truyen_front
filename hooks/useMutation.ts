@@ -1,6 +1,6 @@
 import { useState } from "react"
 import axios, { AxiosError } from "axios"
-import { Record } from "../../../interfaces/RecordEntities"
+import { Record } from "../interfaces/RecordEntities"
 
 export type Action<T> = (record: T) => Promise<void>
 

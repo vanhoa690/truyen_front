@@ -10,8 +10,8 @@ export interface Category extends Record {
   descSeo: string
   image: string
   visible: boolean
-  createdAt?: number
-  updatedAt?: number
+  createdAt?: Date
+  updatedAt?: Date
   // stories?: Story[]
 }
 export interface Story extends Record {
@@ -23,8 +23,8 @@ export interface Story extends Record {
   descSeo: string
   image: string
   visible: boolean
-  createdAt?: number
-  updatedAt?: number
+  createdAt?: Date
+  updatedAt?: Date
   category?: string | null
   // category?: Category | null
 }
@@ -33,5 +33,7 @@ export interface Chap extends Record {
   title: string
   description: string
   story?: string | null
+  createdAt?: Date
+  updatedAt?: Date
   // story?: Story | null
 }

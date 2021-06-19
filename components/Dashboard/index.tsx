@@ -1,35 +1,26 @@
-import { FC, useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import SignIn from "./SignIn"
-import { RootState } from "../../store"
+import React, { FC } from "react"
+import { useForm, SubmitHandler } from "react-hook-form"
+interface IFormInputs {
+  firstName: string
+  lastName: string
+}
+
+const onSubmit: SubmitHandler<IFormInputs> = data => console.log(data)
 const Dashboard: FC = () => {
-  const { user } = useSelector((state: RootState) => state.auth)
-  const { loading } = useSelector((state: RootState) => state.auth)
-  const dispatch = useDispatch()
-  // Check if user exists
-  // useEffect(() => {
-  //   dispatch(setLoading(true))
-  //   const unsubscribe = firebase.auth().onAuthStateChanged(async user => {
-  //     if (user) {
-  //       dispatch(setLoading(true))
-  //       await dispatch(getUserById(user.uid))
-  //       if (!user.emailVerified) {
-  //         dispatch(setNeedVerification())
-  //       }
-  //     }
-  //     dispatch(setLoading(false))
-  //   })
-
-  //   return () => {
-  //     unsubscribe()
-  //   }
-  // }, [dispatch])
-  console.log({ user })
-
+  const {
+    register,
+    formState: { errors },
+    handleSubmit
+  } = useForm<IFormInputs>()
   return (
     <>
-      <h1 className="is-size-1">Welcome {user?.firstName}</h1>
-      <SignIn />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input {...register("firstName", { required: true })} />
+        {errors.firstName && "First name is required"}
+        <input {...register("lastName", { required: true })} />
+        {errors.lastName && "Last name is required"}
+        <input type="submit" />
+      </form>
     </>
   )
 }

@@ -79,7 +79,7 @@ const HomeFeed = ({ stories, storiesPopular, category, chapsPopular }) => {
         <h3 className="text-3xl p-12 text-center">No Story Found</h3>
       )}
 
-      {slicedData.length > 4 && (
+      {slicedData.length > 0 && (
         <div className="flex flex-col items-center mt-12 pb-12">
           <nav
             className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
