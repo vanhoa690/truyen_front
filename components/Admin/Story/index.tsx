@@ -9,11 +9,13 @@ const StoryPage: React.FC = () => {
     title: "",
     slug: "",
     category: "",
+    genres: [],
     description: "",
     titleSeo: "",
     descSeo: "",
     image: "",
     visible: true,
+    popular: false,
     createdAt: new Date(),
     updatedAt: new Date()
   }

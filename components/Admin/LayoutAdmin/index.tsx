@@ -2,6 +2,7 @@ import Head from "next/head"
 import Header from "./Header"
 import Sidebar from "./Sidebar"
 import { Page, usePage } from "../../../contexts/Page"
+import GenrePage from "../Genre"
 import CategoryPage from "../Category"
 import StoryPage from "../Story"
 import ChapPage from "../Chap"
@@ -10,6 +11,8 @@ const Layout = () => {
   const { page } = usePage()
   const renderSwitch = () => {
     switch (page) {
+      case Page.Genre:
+        return <GenrePage />
       case Page.Category:
         return <CategoryPage />
       case Page.Story:

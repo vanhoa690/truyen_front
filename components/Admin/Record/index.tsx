@@ -16,7 +16,6 @@ export const RecordIndex = <T extends Record>({
     apiPath,
     apiOptions
   );
-  console.log({ records })
   const [activeRecord, setActiveRecord] = useState<T>(emptyRecord);
   const callback = () => {
     setVersion(+new Date());
@@ -32,6 +31,9 @@ export const RecordIndex = <T extends Record>({
         setActiveRecord={setActiveRecord}
         loading={loading}
         error={error}
+        // add more
+        apiPath={apiPath}
+        callback={callback}
       />
       <RecordMutations
         FormFields={FormFields}

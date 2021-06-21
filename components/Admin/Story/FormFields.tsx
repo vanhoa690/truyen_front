@@ -41,6 +41,13 @@ export const StoryFormFields: React.FC<IProps> = ({
         checked={formState.visible}
         handleChange={handleChange}
       />
+      <Input
+        label="Popular"
+        name="popular"
+        type="checkbox"
+        checked={formState.popular}
+        handleChange={handleChange}
+      />
       <Textarea
         label="Description"
         name="description"

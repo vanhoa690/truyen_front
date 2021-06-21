@@ -38,6 +38,7 @@ const Sidebar = () => {
         </div>
 
         <nav className="mt-10">
+          {pageLink(Page.Genre)}
           {pageLink(Page.Category)}
           {pageLink(Page.Story)}
           {pageLink(Page.Chap)}

@@ -4,6 +4,9 @@ import { usePage } from "../../../contexts/Page";
 import { Table } from "./Table";
 import { Status } from "./Status";
 import { RecordError } from "./RecordError";
+// add  more
+import { useMutation } from "../../../hooks/useMutation";
+import { useEffect } from "react";
 
 export const RecordList = <T extends Record>({
   ListItem,
@@ -13,8 +16,18 @@ export const RecordList = <T extends Record>({
   setActiveRecord,
   loading,
   error,
+  apiPath,
+  callback,
 }: RecordListProps<T>) => {
   const { page } = usePage();
+  const { update, processing, success, setError } =
+    useMutation<T>(apiPath, callback);
+  useEffect(() => {
+    if (activeRecord.id) {
+      setError(undefined);
+    }
+  }, [activeRecord, setError]);
+
   return (
     <>
       {error && <RecordError error={error} />}
@@ -24,11 +37,11 @@ export const RecordList = <T extends Record>({
         onClick={() => setActiveRecord(emptyRecord)}
       >
         Add New
-        </button>
+      </button>
       <div className="flex flex-col mt-8">
         <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <div className="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
-            <Table<T> records={records} setActiveRecord={setActiveRecord} ListItem={ListItem} />
+            <Table<T> records={records} setActiveRecord={setActiveRecord} ListItem={ListItem} update={update} />
           </div>
         </div>
       </div>

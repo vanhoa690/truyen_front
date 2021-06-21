@@ -3,8 +3,10 @@ import { MenuIcon, SearchIcon } from "@heroicons/react/outline"
 import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react"
 import storyApi from "../../../api/storyApi"
+import { signIn, signOut, useSession } from "next-auth/client"
 
 const Header = ({ categories }) => {
+  const [session] = useSession()
   const [textSearch, setTextSearch] = useState("")
   const [storiesSearch, setStoriesSearch] = useState([])
   const router = useRouter()
@@ -105,6 +107,12 @@ const Header = ({ categories }) => {
               )}
             </ul>
           )}
+        </div>
+        <div className="text-white flex items-center text-xs space-x-6 px-4">
+          <div onClick={session ? signOut : signIn} className="link">
+            <p>{session ? `Hello, ${session.user.name}` : "Sign In"}</p>
+            <p className="font-extrabold md:text-sm">Account & List</p>
+          </div>
         </div>
       </div>
 

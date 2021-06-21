@@ -1,25 +1,25 @@
-import { Category } from "../../../interfaces/RecordEntities";
+import { Genre } from "../../../interfaces/RecordEntities";
 import { RecordIndex } from "../Record";
-import { CategoryListItem } from "./ListItem";
-import { CategoryFormFields } from "./FormFields";
+import { GenreListItem } from "./ListItem";
+import { GenreFormFields } from "./FormFields";
 
 
-const CategoryPage: React.FC = () => {
+const GenrePage: React.FC = () => {
   const apiOptions = {};
   const emptyRecord = {
     title: "",
-    description: "",
+    genre: "",
   };
 
   return (
-    <RecordIndex<Category>
-      ListItem={CategoryListItem}
-      apiPath="categories"
+    <RecordIndex<Genre>
+      ListItem={GenreListItem}
+      apiPath="genres"
       apiOptions={apiOptions}
-      FormFields={CategoryFormFields}
+      FormFields={GenreFormFields}
       emptyRecord={emptyRecord}
     />
 
   )
 }
-export default CategoryPage
+export default GenrePage

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react"
 
 export enum Page {
+  Genre = "Genre",
   Category = "Category",
   Story = "Story",
   Chap = "Chap"
@@ -12,14 +13,14 @@ type ContextType = {
 }
 
 const Context = createContext<ContextType>({
-  page: Page.Category,
+  page: Page.Chap,
   setPage: page => console.warn("no page provider")
 })
 
 export const usePage = () => useContext(Context)
 
 export const PageStore: React.FC = ({ children }) => {
-  const [page, setPage] = useState(Page.Category)
+  const [page, setPage] = useState(Page.Chap)
   return (
     <Context.Provider value={{ page, setPage }}>{children}</Context.Provider>
   )

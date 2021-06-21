@@ -10,6 +10,8 @@ export interface FormFieldsProps<T> {
 
 export interface ListItemProps<T> {
   record: T
+  // add more
+  update: Action<T>
 }
 
 export interface RecordIndexProps<T> {
@@ -27,11 +29,15 @@ export interface RecordListProps<T> {
   setActiveRecord: Function
   loading: boolean
   error?: AxiosError
+  apiPath: string
+  callback: Function
 }
 export interface TableProps<T> {
   ListItem: React.FC<ListItemProps<T>>
   records: T[]
   setActiveRecord: Function
+  // add more
+  update: Action<T>
 }
 export interface RecordMutationsProps<T> {
   FormFields: React.FC<FormFieldsProps<T>>

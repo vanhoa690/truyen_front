@@ -1,10 +1,10 @@
 import { FormFieldsProps } from "../../../interfaces/PagesProps"
-import { Category } from "../../../interfaces/RecordEntities"
-import { Input, Textarea } from "../FormField"
+import { Genre } from "../../../interfaces/RecordEntities"
+import { Input } from "../FormField"
 
-type IProps = FormFieldsProps<Category>
+type IProps = FormFieldsProps<Genre>
 
-export const CategoryFormFields: React.FC<IProps> = (
+export const GenreFormFields: React.FC<IProps> = (
   {
     formState,
     handleChange
@@ -13,8 +13,21 @@ export const CategoryFormFields: React.FC<IProps> = (
 
   return (
     <>
-      <Input name={'title'} value={formState.title} handleChange={handleChange} />
-      <Textarea name={'description'} value={formState.description} handleChange={handleChange} />
+      <Input
+        label="Title"
+        name="title"
+        type="text"
+        value={formState.title}
+        handleChange={handleChange}
+      />
+      <Input
+        label="Genre"
+        name="genre"
+        type="text"
+        value={formState.genre}
+        handleChange={handleChange}
+      />
+
     </>
   )
 }

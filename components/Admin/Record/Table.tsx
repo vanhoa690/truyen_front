@@ -9,6 +9,7 @@ const columns = [
   { label: "Slug", sortKey: "slug" },
   { label: "Description", sortKey: "description" },
   { label: "Visible", sortKey: "visible" },
+  { label: "Popular", sortKey: "popular" },
   { label: "image", sortKey: "image" },
   { label: "createdAt", sortKey: "createdAt" },
   { label: "updatedAt", sortKey: "updatedAt" },
@@ -17,7 +18,8 @@ const columns = [
 export const Table = <T extends Record>({
   records,
   setActiveRecord,
-  ListItem
+  ListItem,
+  update
 }: TableProps<T>) => {
   const { slicedData, pagination, prevPage, nextPage, changePage } =
     usePagination({ itemsPerPage: 6, data: records, startFrom: 1 })
@@ -42,7 +44,7 @@ export const Table = <T extends Record>({
         <tbody className="bg-white">
           {slicedData.map((record, index) => (
             <tr key={record.id}>
-              <ListItem record={record} />
+              <ListItem record={record} update={update} />
               <td className="px-6 py-4 whitespace-nowrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
                 <a
                   className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
@@ -73,11 +75,10 @@ export const Table = <T extends Record>({
                 return (
                   <a
                     key={page.id}
-                    className={`${
-                      page.current
-                        ? "z-10 bg-indigo-50 border-indigo-500 text-indigo-600"
-                        : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50"
-                    } relative inline-flex items-center px-4 py-2 border text-sm font-medium  cursor-pointer`}
+                    className={`${page.current
+                      ? "z-10 bg-indigo-50 border-indigo-500 text-indigo-600"
+                      : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50"
+                      } relative inline-flex items-center px-4 py-2 border text-sm font-medium  cursor-pointer`}
                     onClick={e => changePage(page.id, e)}
                   >
                     {page.id}

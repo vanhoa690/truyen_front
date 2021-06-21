@@ -5,7 +5,7 @@ import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/solid"
 
 type IProps = ListItemProps<Category>
 
-export const CategoryListItem: React.FC<IProps> = ({ record }) => {
+export const CategoryListItem: React.FC<IProps> = ({ record, update }) => {
   return (
     <>
       <td className="px-6 py-4 border-b border-gray-200">{record.id}</td>
@@ -14,12 +14,17 @@ export const CategoryListItem: React.FC<IProps> = ({ record }) => {
       <td className="px-6 py-4 border-b border-gray-200">
         {record.description}
       </td>
-      <td className="px-6 py-4 border-b border-gray-200">
+      <td className="px-6 py-4 border-b border-gray-200" onClick={() => {
+        update({ ...record, visible: !record.visible })
+      }}>
         {record.visible ? (
           <CheckCircleIcon className="text-green-500 h-5" />
         ) : (
           <XCircleIcon className="text-red-500 h-5" />
         )}
+      </td>
+      <td className="px-6 py-4 border-b border-gray-200">
+
       </td>
       <td className="px-6 py-4 border-b border-gray-200">{record.image}</td>
       <td className="px-6 py-4 border-b border-gray-200">
