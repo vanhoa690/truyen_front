@@ -44,6 +44,7 @@ const HomeItem = ({
           chap =>
             chap.story === id && (
               <h4
+                key={chap.id}
                 className="mt-2 text-center link text-white p-5 z-10 text-xl tracking-tight font-medium leading-7 absolute bottom-0"
                 onClick={() => router.push(`/${id}/${chap.id}`)}
               >
