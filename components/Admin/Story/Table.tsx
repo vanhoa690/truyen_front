@@ -18,7 +18,7 @@ const columns = [
   { label: "updatedAt", sortKey: "updatedAt" },
   { label: "Role", sortKey: "role" }
 ]
-export const Table = <T extends Record>({
+export const StoryTable = <T extends Record>({
   records,
   setActiveRecord,
   ListItem,

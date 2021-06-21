@@ -11,6 +11,7 @@ const ChapPage: React.FC = () => {
     story: "",
     description: "",
     image: "",
+    genre: '',
     visible: true,
     popular: false,
     createdAt: new Date(),

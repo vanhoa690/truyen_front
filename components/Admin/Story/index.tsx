@@ -2,6 +2,7 @@ import { Story } from "../../../interfaces/RecordEntities"
 import { RecordIndex } from "../Record"
 import { StoryListItem } from "./ListItem"
 import { StoryFormFields } from "./FormFields"
+import { StoryTable } from "./Table"
 
 const StoryPage: React.FC = () => {
   const apiOptions = {}
@@ -27,6 +28,7 @@ const StoryPage: React.FC = () => {
       apiOptions={apiOptions}
       FormFields={StoryFormFields}
       emptyRecord={emptyRecord}
+      Table={StoryTable}
     />
   )
 }

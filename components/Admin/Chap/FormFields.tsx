@@ -1,8 +1,9 @@
 import { useFetch } from "../../../hooks/useFetchAdmin"
 import { FormFieldsProps } from "../../../interfaces/PagesProps"
-import { Chap, Story } from "../../../interfaces/RecordEntities"
+import { Genre, Chap, Story } from "../../../interfaces/RecordEntities"
 import { Input, Select, Textarea } from "../FormField"
 import { StoryOptionItem } from "./OptionItem"
+import { GenreItem } from "./GenreItem"
 
 type IProps = FormFieldsProps<Chap>
 
@@ -10,11 +11,13 @@ export const ChapFormFields: React.FC<IProps> = ({
   formState,
   handleChange
 }) => {
+  const genresFetch = useFetch<Genre>("genres")
   const storiesFetch = useFetch<Story>("stories")
   return (
     <>
       <Select
-        name={"category"}
+        label="Story"
+        name={"story"}
         value={formState.story ? formState.story : ""}
         handleChange={handleChange}
         options={storiesFetch.records}
@@ -33,6 +36,14 @@ export const ChapFormFields: React.FC<IProps> = ({
         type="text"
         value={formState.slug}
         handleChange={handleChange}
+      />
+      <Select
+        label="Genre"
+        name={"genre"}
+        value={formState.genre ? formState.genre : ""}
+        handleChange={handleChange}
+        options={genresFetch.records}
+        OptionItem={GenreItem}
       />
       <Input
         label="Visible"

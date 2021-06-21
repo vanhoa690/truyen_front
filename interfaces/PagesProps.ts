@@ -19,6 +19,7 @@ export interface RecordIndexProps<T> {
   apiOptions: {}
   ListItem: React.FC<ListItemProps<T>>
   FormFields: React.FC<FormFieldsProps<T>>
+  Table: TableProps<T>
   emptyRecord: T
 }
 export interface RecordListProps<T> {
@@ -79,9 +80,19 @@ export interface InputProps {
 }
 
 export interface SelectProps<T> {
+  label: string
   name: string
   value: number | string | undefined
   options: T[]
   OptionItem: React.FC<ListItemProps<T>>
+  handleChange: (event: React.ChangeEvent<IChangeElement>) => void
+}
+
+export interface MutilCheckboxProps<T> {
+  label: string
+  name: string
+  checked: string[] | string
+  options: T[]
+  // OptionItem: React.FC<ListItemProps<T>>
   handleChange: (event: React.ChangeEvent<IChangeElement>) => void
 }

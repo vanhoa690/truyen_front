@@ -39,6 +39,7 @@ export interface Chap extends Record {
   id?: number
   title: string
   slug: string
+  genre: string
   description: string
   image: string
   visible: boolean
