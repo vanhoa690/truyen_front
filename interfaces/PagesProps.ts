@@ -13,14 +13,21 @@ export interface ListItemProps<T> {
   // add more
   update: Action<T>
 }
+export interface columnsTableProps {
+  label: string
+  sortKey: string
+}
 
 export interface RecordIndexProps<T> {
   apiPath: string
   apiOptions: {}
   ListItem: React.FC<ListItemProps<T>>
   FormFields: React.FC<FormFieldsProps<T>>
-  Table: TableProps<T>
   emptyRecord: T
+  // add more
+  columns: columnsTableProps[]
+  textSearch: string
+  setTextSearch: Function
 }
 export interface RecordListProps<T> {
   ListItem: React.FC<ListItemProps<T>>
@@ -32,6 +39,10 @@ export interface RecordListProps<T> {
   error?: AxiosError
   apiPath: string
   callback: Function
+  // add more
+  columns: columnsTableProps[]
+  textSearch: string
+  setTextSearch: Function
 }
 export interface TableProps<T> {
   ListItem: React.FC<ListItemProps<T>>
@@ -39,6 +50,10 @@ export interface TableProps<T> {
   setActiveRecord: Function
   // add more
   update: Action<T>
+  remove: Action<T>
+  columns: columnsTableProps[]
+  textSearch: string
+  setTextSearch: Function
 }
 export interface RecordMutationsProps<T> {
   FormFields: React.FC<FormFieldsProps<T>>
