@@ -7,7 +7,7 @@ import { ChapFormFields } from "./FormFields";
 const ChapPage: React.FC = () => {
   const apiOptions = {};
   const emptyRecord = {
-    name: "",
+    title: "",
     description: "",
   };
 

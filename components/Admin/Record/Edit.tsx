@@ -25,6 +25,5 @@ export const RecordEdit = <T extends Record>({
         success={success}
       />
     </>
-    // </div>
   )
 }

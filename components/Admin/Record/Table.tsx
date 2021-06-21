@@ -1,7 +1,7 @@
 import { Record } from "../../../interfaces/RecordEntities"
 import { TableProps } from "../../../interfaces/PagesProps"
-import usePagination from "../../../hooks/usePagination"
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid"
+// import usePagination from "../../../hooks/usePagination"
+// import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid"
 
 const columns = [
   { label: "Id", sortKey: "id" },
@@ -19,8 +19,8 @@ export const Table = <T extends Record>({
   setActiveRecord,
   ListItem
 }: TableProps<T>) => {
-  const { slicedData, pagination, prevPage, nextPage, changePage } =
-    usePagination({ itemsPerPage: 6, data: records, startFrom: 1 })
+  // const { slicedData, pagination, prevPage, nextPage, changePage } =
+  //   usePagination({ itemsPerPage: 6, data: records, startFrom: 1 })
   return (
     <>
       <table className="min-w-full">
@@ -40,7 +40,7 @@ export const Table = <T extends Record>({
         </thead>
 
         <tbody className="bg-white">
-          {slicedData.map((record, index) => (
+          {records.map((record, index) => (
             <tr key={record.id}>
               <ListItem record={record} />
               <td className="px-6 py-4 whitespace-nowrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
@@ -55,7 +55,7 @@ export const Table = <T extends Record>({
           ))}
         </tbody>
       </table>
-      {slicedData.length > 0 && (
+      {/* {slicedData.length > 0 && (
         <div className="flex flex-col items-center mt-12 pb-12">
           <nav
             className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
@@ -103,7 +103,7 @@ export const Table = <T extends Record>({
             </a>
           </nav>
         </div>
-      )}
+      )}*/}
     </>
   )
 }
