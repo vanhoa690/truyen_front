@@ -1,8 +1,15 @@
-import { Record } from "../../../interfaces/RecordEntities"
+import { } from "../../../interfaces/RecordEntities"
 import { TableProps } from "../../../interfaces/PagesProps"
 import usePagination from "../../../hooks/usePagination"
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid"
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronDownIcon,
+  ChevronUpIcon
+} from "@heroicons/react/solid"
 import { useState } from "react"
+import { useFetch } from "../../../hooks/useFetchAdmin"
+import { Category, Story, Record } from "../../../interfaces/RecordEntities"
 
 export const Table = <T extends Record>({
   records,
@@ -10,12 +17,38 @@ export const Table = <T extends Record>({
   ListItem,
   update,
   remove,
+  // add more
   columns,
   textSearch,
-  setTextSearch
+  setTextSearch,
+  setVisibleFilter,
+  setPopularFilter,
+  setStoryFilter,
+  setCategoryFilter,
+  setSort,
+  setOrder,
+  order,
+  sort
 }: TableProps<T>) => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(5)
-
+  let storiesFetch,
+    categoriesFetch = null
+  if (setStoryFilter) {
+    storiesFetch = useFetch<Story>("stories").records
+  }
+  if (setCategoryFilter) {
+    categoriesFetch = useFetch<Category>("categories").records
+  }
+  const handleSort = (sortKey: string | undefined) => {
+    if (setSort && setOrder) {
+      setSort(sortKey)
+      if (order === "desc") {
+        setOrder("asc")
+      } else {
+        setOrder("desc")
+      }
+    }
+  }
   const { slicedData, pagination, prevPage, nextPage, changePage } =
     usePagination({ itemsPerPage, data: records, startFrom: 1 })
   return (
@@ -25,7 +58,7 @@ export const Table = <T extends Record>({
           <div className="relative">
             <select
               className="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              onChange={(e) => setItemsPerPage(Number(e.target.value))}
+              onChange={e => setItemsPerPage(Number(e.target.value))}
             >
               <option value={5}>5</option>
               <option value={10}>10</option>
@@ -44,10 +77,13 @@ export const Table = <T extends Record>({
           </div>
 
           <div className="relative">
-            <select className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-              <option>All</option>
-              <option>Active</option>
-              <option>Inactive</option>
+            <select
+              className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+              onChange={e => setVisibleFilter(e.target.value)}
+            >
+              <option value="">All visibles</option>
+              <option value={"true"}>Visible</option>
+              <option value={"false"}>Invisible</option>
             </select>
 
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -60,6 +96,78 @@ export const Table = <T extends Record>({
               </svg>
             </div>
           </div>
+          {setPopularFilter && (
+            <div className="relative">
+              <select
+                className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+                onChange={e => setPopularFilter(e.target.value)}
+              >
+                <option value="">All populars</option>
+                <option value={"true"}>Popular</option>
+                <option value={"false"}>Inpopular</option>
+              </select>
+
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+          )}
+
+          {setStoryFilter && (
+            <div className="relative">
+              <select
+                className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+                onChange={e => setStoryFilter(e.target.value)}
+              >
+                <option value="">All Stories</option>
+                {storiesFetch &&
+                  storiesFetch.map(story => (
+                    <option value={story.id}>{story.title}</option>
+                  ))}
+              </select>
+
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+          )}
+
+          {setCategoryFilter && (
+            <div className="relative">
+              <select
+                className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+                onChange={e => setCategoryFilter(e.target.value)}
+              >
+                <option value="">All Categories</option>
+                {categoriesFetch &&
+                  categoriesFetch.map(category => (
+                    <option value={category.id}>{category.title}</option>
+                  ))}
+              </select>
+
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="block relative mt-2 sm:mt-0">
@@ -86,10 +194,20 @@ export const Table = <T extends Record>({
           <tr>
             {columns.map((col, index) => (
               <th
-                className="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
                 key={index}
+                className="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+                onClick={() => handleSort(col.sortKey)}
               >
-                {col.label}
+                <div className="flex">
+                  {col.label}
+                  {col.sortKey && col.sortKey === sort ? (
+                    order === "asc" ? (
+                      <ChevronUpIcon className="h-5" />
+                    ) : (
+                      <ChevronDownIcon className="h-5" />
+                    )
+                  ) : null}
+                </div>
               </th>
             ))}
 
@@ -98,7 +216,7 @@ export const Table = <T extends Record>({
         </thead>
 
         <tbody className="bg-white">
-          {slicedData.map((record) => (
+          {slicedData.map(record => (
             <tr key={record.id}>
               <ListItem record={record} update={update} />
               <td className="px-6 py-4 whitespace-nowrap text-right border-b border-gray-200 text-sm leading-5 font-medium">

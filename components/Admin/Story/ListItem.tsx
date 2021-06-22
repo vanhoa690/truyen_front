@@ -46,9 +46,9 @@ export const StoryListItem: React.FC<IProps> = ({ record, update }) => {
       <td className="px-6 py-4 border-b border-gray-200">
         {moment(record.createdAt).format("DD MMM YYYY")}
       </td>
-      <td className="px-6 py-4 border-b border-gray-200">
+      {/* <td className="px-6 py-4 border-b border-gray-200">
         {moment(record.updatedAt).format("DD MMM YYYY")}
-      </td>
+      </td> */}
     </>
   )
 }

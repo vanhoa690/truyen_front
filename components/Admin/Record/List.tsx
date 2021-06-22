@@ -21,7 +21,15 @@ export const RecordList = <T extends Record>({
   // add more
   columns,
   textSearch,
-  setTextSearch
+  setTextSearch,
+  setVisibleFilter,
+  setPopularFilter,
+  setStoryFilter,
+  setCategoryFilter,
+  setSort,
+  setOrder,
+  order,
+  sort
 }: RecordListProps<T>) => {
   const { page } = usePage()
   const { update, remove, processing, success, setError } = useMutation<T>(
@@ -56,6 +64,14 @@ export const RecordList = <T extends Record>({
               columns={columns}
               textSearch={textSearch}
               setTextSearch={setTextSearch}
+              setVisibleFilter={setVisibleFilter}
+              setPopularFilter={setPopularFilter}
+              setStoryFilter={setStoryFilter}
+              setCategoryFilter={setCategoryFilter}
+              setSort={setSort}
+              setOrder={setOrder}
+              order={order}
+              sort={sort}
             />
           </div>
         </div>

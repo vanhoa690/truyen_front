@@ -2,7 +2,6 @@ import { useFetch } from "../../../hooks/useFetchAdmin"
 import { FormFieldsProps } from "../../../interfaces/PagesProps"
 import { Genre, Story, Category } from "../../../interfaces/RecordEntities"
 import { Input, Select, Textarea, MutilCheckbox } from "../FormField"
-// import { GeOptionItem } from "./OptionItem"
 
 type IProps = FormFieldsProps<Story>
 
@@ -35,14 +34,13 @@ export const StoryFormFields: React.FC<IProps> = ({
         value={formState.slug}
         handleChange={handleChange}
       />
-      {/* <MutilCheckbox
+      <MutilCheckbox
         label="Genres"
         name={"genres"}
-        checked={formState.genres}
+        value={formState.genres ? formState.genres : []}
         handleChange={handleChange}
         options={genresFetch.records}
-      // OptionItem={CategoryOptionItem}
-      /> */}
+      />
 
       <Input
         label="Visible"

@@ -44,12 +44,12 @@ export const ChapListItem: React.FC<IProps> = ({ record, update }) => {
         alt={record.title}
 
       />)}</td>
-      {/* <td className="px-6 py-4 border-b border-gray-200">
-        {moment(record.createdAt).format("DD MMM YYYY")}
-      </td> */}
       <td className="px-6 py-4 border-b border-gray-200">
-        {moment(record.updatedAt).format("DD MMM YYYY")}
+        {moment(record.createdAt).format("DD MMM YYYY")}
       </td>
+      {/* <td className="px-6 py-4 border-b border-gray-200">
+        {moment(record.updatedAt).format("DD MMM YYYY")}
+      </td> */}
     </>
   )
 }

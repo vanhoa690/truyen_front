@@ -5,9 +5,19 @@ import { StoryFormFields } from "./FormFields"
 import { useState } from "react"
 const StoryPage: React.FC = () => {
   const [textSearch, setTextSearch] = useState<string>("")
+  const [visibleFilter, setVisibleFilter] = useState<string | boolean>("")
+  const [popularFilter, setPopularFilter] = useState<string | boolean>('')
+  const [categoryFilter, setCategoryFilter] = useState<string>('')
+  const [sort, setSort] = useState<string>('createdAt')
+  const [order, setOrder] = useState<string>('desc')
+
   const apiOptions = {
-    title_like: textSearch, _sort: "createdAt",
-    _order: "desc"
+    title_like: textSearch ? textSearch : null,
+    _sort: sort,
+    _order: order,
+    visible: visibleFilter ? visibleFilter : null,
+    popular: popularFilter ? popularFilter : null,
+    category: categoryFilter ? categoryFilter : null,
   }
   const emptyRecord = {
     title: "",
@@ -20,8 +30,6 @@ const StoryPage: React.FC = () => {
     image: "",
     visible: true,
     popular: false,
-    createdAt: new Date(),
-    updatedAt: new Date()
   }
   const columnsStoryTable = [
     { label: "Id", sortKey: "id" },
@@ -29,12 +37,12 @@ const StoryPage: React.FC = () => {
     { label: "Slug", sortKey: "slug" },
     { label: "Category", sortKey: "category" },
     { label: "Description", sortKey: "description" },
-    { label: "Visible", sortKey: "visible" },
-    { label: "Popular", sortKey: "popular" },
-    { label: "image", sortKey: "image" },
+    { label: "Visible" },
+    { label: "Popular" },
+    { label: "image" },
     { label: "createdAt", sortKey: "createdAt" },
-    { label: "updatedAt", sortKey: "updatedAt" },
-    { label: "Role", sortKey: "role" }
+    // { label: "updatedAt", sortKey: "updatedAt" },
+    { label: "Role" }
   ]
   return (
     <RecordIndex<Story>
@@ -46,6 +54,13 @@ const StoryPage: React.FC = () => {
       emptyRecord={emptyRecord}
       textSearch={textSearch}
       setTextSearch={setTextSearch}
+      setVisibleFilter={setVisibleFilter}
+      setPopularFilter={setPopularFilter}
+      setCategoryFilter={setCategoryFilter}
+      sort={sort}
+      setSort={setSort}
+      order={order}
+      setOrder={setOrder}
     />
   )
 }

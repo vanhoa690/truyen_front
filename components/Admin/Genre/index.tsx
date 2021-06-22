@@ -6,7 +6,11 @@ import { useState } from "react"
 
 const GenrePage: React.FC = () => {
   const [textSearch, setTextSearch] = useState<string>("")
-  const apiOptions = { title_like: textSearch }
+  const [visibleFilter, setVisibleFilter] = useState<string | boolean>("")
+  const apiOptions = {
+    title_like: textSearch ? textSearch : null,
+    visible: visibleFilter ? visibleFilter : null
+  }
   const emptyRecord = {
     title: "",
     genre: "",
@@ -16,8 +20,8 @@ const GenrePage: React.FC = () => {
     { label: "Id", sortKey: "id" },
     { label: "Title", sortKey: "title" },
     { label: "Genre", sortKey: "genre" },
-    { label: "Visible", sortKey: "visible" },
-    { label: "Role", sortKey: "role" }
+    { label: "Visible" },
+    { label: "Role" }
   ]
 
   return (
@@ -30,6 +34,7 @@ const GenrePage: React.FC = () => {
       emptyRecord={emptyRecord}
       textSearch={textSearch}
       setTextSearch={setTextSearch}
+      setVisibleFilter={setVisibleFilter}
     />
   )
 }

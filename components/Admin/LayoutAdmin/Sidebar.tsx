@@ -12,7 +12,7 @@ const Sidebar = () => {
         className={`${pageName === page
           ? "bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100"
           : "border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
-          } flex items-center duration-200 mt-4 py-2 px-6 border-l-4`}
+          } flex items-center duration-200 mt-4 py-2 px-6 border-l-4 cursor-pointer`}
         onClick={() => setPage(pageName)}
       >
         {pageName}

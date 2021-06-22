@@ -14,7 +14,7 @@ const ChapContent = ({ story, chap, chapsRelated }) => {
   }
 
   const handleClickPrev = () => {
-    if (index <= 0 && index < chapsRelated.length - 1) {
+    if (index < 0 || index < chapsRelated.length - 1) {
       router.push(`/${story.id}/${chapsRelated[index + 1].id}`)
       setChapSelect(chapsRelated[index + 1].id)
     }
@@ -40,7 +40,7 @@ const ChapContent = ({ story, chap, chapsRelated }) => {
       <div className="flex items-center justify-center mt-5">
         <button
           className={`button mt-auto mx-2 ${
-            index <= 0 && index < chapsRelated.length - 1
+            index < 0 || index < chapsRelated.length - 1
               ? ""
               : "from-gray-300 to-gray-500 border-gray-200 text-gray-300"
           } `}

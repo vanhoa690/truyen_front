@@ -6,7 +6,12 @@ import { useState } from "react"
 
 const CategoryPage: React.FC = () => {
   const [textSearch, setTextSearch] = useState<string>("")
-  const apiOptions = { title_like: textSearch }
+  const [visibleFilter, setVisibleFilter] = useState<string | boolean>('')
+
+  const apiOptions = {
+    title_like: textSearch ? textSearch : null,
+    visible: visibleFilter ? visibleFilter : null
+  }
   const emptyRecord = {
     title: "",
     description: "",
@@ -23,11 +28,11 @@ const CategoryPage: React.FC = () => {
     { label: "Title", sortKey: "title" },
     { label: "Slug", sortKey: "slug" },
     { label: "Description", sortKey: "description" },
-    { label: "Visible", sortKey: "visible" },
-    { label: "image", sortKey: "image" },
+    { label: "Visible" },
+    { label: "image" },
     { label: "createdAt", sortKey: "createdAt" },
     { label: "updatedAt", sortKey: "updatedAt" },
-    { label: "Role", sortKey: "role" }
+    { label: "Role" }
   ]
 
   return (
@@ -40,6 +45,7 @@ const CategoryPage: React.FC = () => {
       emptyRecord={emptyRecord}
       textSearch={textSearch}
       setTextSearch={setTextSearch}
+      setVisibleFilter={setVisibleFilter}
     />
   )
 }

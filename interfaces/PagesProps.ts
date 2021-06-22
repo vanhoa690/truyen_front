@@ -15,7 +15,7 @@ export interface ListItemProps<T> {
 }
 export interface columnsTableProps {
   label: string
-  sortKey: string
+  sortKey?: string
 }
 
 export interface RecordIndexProps<T> {
@@ -28,6 +28,14 @@ export interface RecordIndexProps<T> {
   columns: columnsTableProps[]
   textSearch: string
   setTextSearch: Function
+  setVisibleFilter: Function
+  setPopularFilter?: Function
+  setStoryFilter?: Function
+  setCategoryFilter?: Function
+  setSort?: Function
+  setOrder?: Function
+  order?: string
+  sort?: string
 }
 export interface RecordListProps<T> {
   ListItem: React.FC<ListItemProps<T>>
@@ -39,10 +47,18 @@ export interface RecordListProps<T> {
   error?: AxiosError
   apiPath: string
   callback: Function
-  // add more
+  // add mored
   columns: columnsTableProps[]
   textSearch: string
   setTextSearch: Function
+  setVisibleFilter: Function
+  setPopularFilter: Function | undefined
+  setStoryFilter: Function | undefined
+  setCategoryFilter: Function | undefined
+  setSort: Function | undefined
+  setOrder: Function | undefined
+  order: string | undefined
+  sort: string | undefined
 }
 export interface TableProps<T> {
   ListItem: React.FC<ListItemProps<T>>
@@ -54,6 +70,14 @@ export interface TableProps<T> {
   columns: columnsTableProps[]
   textSearch: string
   setTextSearch: Function
+  setVisibleFilter: Function
+  setPopularFilter: Function | undefined
+  setStoryFilter: Function | undefined
+  setCategoryFilter: Function | undefined
+  setSort: Function | undefined
+  setOrder: Function | undefined
+  order: string | undefined
+  sort: string | undefined
 }
 export interface RecordMutationsProps<T> {
   FormFields: React.FC<FormFieldsProps<T>>
@@ -104,8 +128,7 @@ export interface SelectProps<T> {
 export interface MutilCheckboxProps<T> {
   label: string
   name: string
-  checked: string[] | string
+  value: string[]
   options: T[]
-  // OptionItem: React.FC<ListItemProps<T>>
   handleChange: (event: React.ChangeEvent<IChangeElement>) => void
 }

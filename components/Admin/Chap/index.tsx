@@ -6,10 +6,19 @@ import { useState } from "react"
 
 const ChapPage: React.FC = () => {
   const [textSearch, setTextSearch] = useState<string>("")
+  const [visibleFilter, setVisibleFilter] = useState<string | boolean>('')
+  const [popularFilter, setPopularFilter] = useState<string | boolean>('')
+  const [storyFilter, setStoryFilter] = useState<string>('')
+  const [sort, setSort] = useState<string>('createdAt')
+  const [order, setOrder] = useState<string>('desc')
+
   const apiOptions = {
-    title_like: textSearch,
-    _sort: "createdAt",
-    _order: "desc",
+    title_like: textSearch ? textSearch : null,
+    _sort: sort,
+    _order: order,
+    visible: visibleFilter ? visibleFilter : null,
+    popular: popularFilter ? popularFilter : null,
+    story: storyFilter ? storyFilter : null,
   }
   const emptyRecord = {
     title: "",
@@ -30,12 +39,12 @@ const ChapPage: React.FC = () => {
     { label: "Story", sortKey: "story" },
     { label: "Genre", sortKey: "genre" },
     // { label: "Description", sortKey: "description" },
-    { label: "Visible", sortKey: "visible" },
-    { label: "Popular", sortKey: "popular" },
-    { label: "image", sortKey: "image" },
-    // { label: "createdAt", sortKey: "createdAt" },
-    { label: "updatedAt", sortKey: "updatedAt" },
-    { label: "Role", sortKey: "role" }
+    { label: "Visible" },
+    { label: "Popular" },
+    { label: "image" },
+    { label: "createdAt", sortKey: "createdAt" },
+    // { label: "updatedAt", sortKey: "updatedAt" },
+    { label: "Role" }
   ]
   return (
     <RecordIndex<Chap>
@@ -47,6 +56,13 @@ const ChapPage: React.FC = () => {
       emptyRecord={emptyRecord}
       textSearch={textSearch}
       setTextSearch={setTextSearch}
+      setVisibleFilter={setVisibleFilter}
+      setPopularFilter={setPopularFilter}
+      setStoryFilter={setStoryFilter}
+      sort={sort}
+      setSort={setSort}
+      order={order}
+      setOrder={setOrder}
     />
   )
 }
