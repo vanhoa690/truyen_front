@@ -2,6 +2,7 @@ import { Category } from "../../../interfaces/RecordEntities"
 import { ListItemProps } from "../../../interfaces/PagesProps"
 import moment from "moment"
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/solid"
+import Image from "next/image"
 
 type IProps = ListItemProps<Category>
 
@@ -26,7 +27,15 @@ export const CategoryListItem: React.FC<IProps> = ({ record, update }) => {
           <XCircleIcon className="text-red-500 h-5" />
         )}
       </td>
-      <td className="px-6 py-4 border-b border-gray-200">{record.image}</td>
+      <td className="px-6 py-4 border-b border-gray-200">{record.image && (<Image
+        src={record.image}
+        width={150}
+        height={30}
+        layout="responsive"
+        objectFit="contain"
+        alt={record.title}
+
+      />)}</td>
       <td className="px-6 py-4 border-b border-gray-200">
         {moment(record.createdAt).format("DD MMM YYYY")}
       </td>

@@ -9,12 +9,14 @@ const GenrePage: React.FC = () => {
   const apiOptions = { title_like: textSearch }
   const emptyRecord = {
     title: "",
-    genre: ""
+    genre: "",
+    visible: true
   }
   const columnsGenreTable = [
     { label: "Id", sortKey: "id" },
     { label: "Title", sortKey: "title" },
     { label: "Genre", sortKey: "genre" },
+    { label: "Visible", sortKey: "visible" },
     { label: "Role", sortKey: "role" }
   ]
 

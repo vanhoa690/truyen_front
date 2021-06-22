@@ -16,11 +16,11 @@ export default StoryPage
 
 export const getServerSideProps = async context => {
   const storyId = context.query.story
-  const genre = context.query.genre
+  const genreId = context.query.genreId
 
   const initialState = {
     storyId,
-    genre
+    genreId
   }
   const { categories, storiesPopularAll, story, chaps, genres } =
     await useFetch(initialState)

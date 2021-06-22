@@ -7,17 +7,19 @@ const ChapContent = ({ story, chap, chapsRelated }) => {
   const router = useRouter()
   const index = chapsRelated.findIndex(c => c.id === chap.id)
   const [chapSelect, setChapSelect] = useState(chap.id)
-  console.log({ index })
+
   const handleChangeChap = e => {
     setChapSelect(e.target.value)
     router.push(`/${story.id}/${e.target.value}`)
   }
+
   const handleClickPrev = () => {
     if (index <= 0 && index < chapsRelated.length - 1) {
       router.push(`/${story.id}/${chapsRelated[index + 1].id}`)
       setChapSelect(chapsRelated[index + 1].id)
     }
   }
+
   const handleClickNext = () => {
     if (index > 0) {
       router.push(`/${story.id}/${chapsRelated[index - 1].id}`)
@@ -29,7 +31,7 @@ const ChapContent = ({ story, chap, chapsRelated }) => {
       <div className="flex items-center justify-center space-x-2">
         <CheckCircleIcon className="text-green-500 h-10" />
         <h1 className="text-3xl">
-          <Link href={`/${story.id}?genre=${chap.genre}`}>
+          <Link href={`/${story.id}?genreId=${chap.genre}`}>
             <a className="hover:underline">{story.title}</a>
           </Link>{" "}
           - {chap.title}

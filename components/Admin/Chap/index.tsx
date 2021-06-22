@@ -6,7 +6,11 @@ import { useState } from "react"
 
 const ChapPage: React.FC = () => {
   const [textSearch, setTextSearch] = useState<string>("")
-  const apiOptions = { title_like: textSearch }
+  const apiOptions = {
+    title_like: textSearch,
+    _sort: "createdAt",
+    _order: "desc",
+  }
   const emptyRecord = {
     title: "",
     slug: "",
@@ -23,11 +27,13 @@ const ChapPage: React.FC = () => {
     { label: "Id", sortKey: "id" },
     { label: "Title", sortKey: "title" },
     { label: "Slug", sortKey: "slug" },
-    { label: "Description", sortKey: "description" },
+    { label: "Story", sortKey: "story" },
+    { label: "Genre", sortKey: "genre" },
+    // { label: "Description", sortKey: "description" },
     { label: "Visible", sortKey: "visible" },
     { label: "Popular", sortKey: "popular" },
     { label: "image", sortKey: "image" },
-    { label: "createdAt", sortKey: "createdAt" },
+    // { label: "createdAt", sortKey: "createdAt" },
     { label: "updatedAt", sortKey: "updatedAt" },
     { label: "Role", sortKey: "role" }
   ]

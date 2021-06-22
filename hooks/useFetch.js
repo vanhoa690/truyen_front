@@ -5,7 +5,7 @@ import chapApi from "../api/chapApi"
 import genreApi from "../api/genreApi"
 
 const useFetch = async (initialState = {}) => {
-  const { categoryId, storyId, chapId, genre } = initialState
+  const { categoryId, storyId, chapId, genreId } = initialState
 
   let categories,
     stories,
@@ -19,17 +19,21 @@ const useFetch = async (initialState = {}) => {
     chap = {}
 
   try {
-    categories = await categoryApi.getAll()
+    categories = await categoryApi.getAll({
+      visible: true
+    })
   } catch (error) {
     console.log("Failed to fetch:categories ")
   }
 
   try {
     storiesPopularAll = await storyApi.getAll({
-      popular: true
+      popular: true,
+      visible: true
     })
     chapsPopular = await chapApi.getAll({
       popular: true,
+      visible: true,
       _sort: "createdAt",
       _order: "asc"
     })
@@ -40,7 +44,7 @@ const useFetch = async (initialState = {}) => {
   if (categoryId) {
     if (categoryId === "All") {
       try {
-        stories = await storyApi.getAll()
+        stories = await storyApi.getAll({ visible: true })
         storiesPopular = [...storiesPopularAll]
       } catch (error) {
         console.log("Failed to fetch:stories All ")
@@ -48,11 +52,13 @@ const useFetch = async (initialState = {}) => {
     } else {
       try {
         stories = await storyApi.getAll({
-          category: categoryId
+          category: categoryId,
+          visible: true
         })
         storiesPopular = await storyApi.getAll({
           category: categoryId,
-          popular: true
+          popular: true,
+          visible: true
         })
       } catch (error) {
         console.log("Failed to fetch:stories - cateId ")
@@ -62,10 +68,11 @@ const useFetch = async (initialState = {}) => {
   if (storyId) {
     try {
       story = await storyApi.get(storyId)
-      genres = await genreApi.getAll()
+      genres = await genreApi.getAll({ visible: true })
       chaps = await chapApi.getAll({
         story: storyId,
-        genre: genre || "comic",
+        visible: true,
+        genre: genreId || "213123123-123123123",
         _sort: "createdAt",
         _order: "desc"
       })
@@ -80,7 +87,8 @@ const useFetch = async (initialState = {}) => {
       const storyId = chap.story
       chapsRelated = await chapApi.getAll({
         story: storyId,
-        genre: genre || "comic",
+        visible: true,
+        genre: genre || "213123123-123123123",
         _sort: "createdAt",
         _order: "desc"
       })

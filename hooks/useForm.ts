@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { Action } from "./useMutation"
-
 export type IChangeElement =
   | HTMLInputElement
   | HTMLSelectElement
@@ -11,7 +10,7 @@ export const useForm = <T>(initialState: T, handleAction: Action<T>) => {
   const handleChange = (event: React.ChangeEvent<IChangeElement>): void => {
     const { tagName, name, value, type, checked } =
       event.target as HTMLInputElement
-    console.log({ tagName, name, value, type, checked })
+
     let parsedValue = null
     if (tagName === "SELECT" && value === "") {
       parsedValue = null

@@ -74,7 +74,6 @@ export interface RecordEditProps<T> {
   FormFields: React.FC<FormFieldsProps<T>>
   activeRecord: T
   update: Action<T>
-  remove: Action<T>
   success?: boolean
 }
 
@@ -99,7 +98,6 @@ export interface SelectProps<T> {
   name: string
   value: number | string | undefined
   options: T[]
-  OptionItem: React.FC<ListItemProps<T>>
   handleChange: (event: React.ChangeEvent<IChangeElement>) => void
 }
 

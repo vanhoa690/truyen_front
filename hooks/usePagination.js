@@ -12,13 +12,16 @@ const usePagination = initialState => {
   const [slicedData, setSlicedData] = useState(
     [...data].slice((currentPage - 1) * perPage, currentPage * perPage)
   )
-  useEffect(
-    () =>
-      setSlicedData(
-        [...data].slice((currentPage - 1) * perPage, currentPage * perPage)
-      ),
-    [data]
-  )
+  useEffect(() => {
+    setCurrentPage(1)
+    setSlicedData([...data].slice(0, perPage))
+  }, [perPage])
+
+  useEffect(() => {
+    setSlicedData(
+      [...data].slice((currentPage - 1) * perPage, currentPage * perPage)
+    )
+  }, [data])
 
   let ellipsisLeft = false
   let ellipsisRight = false

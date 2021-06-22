@@ -1,10 +1,12 @@
 export interface Record {
   id?: number
+  title?: string
 }
 export interface Genre extends Record {
   id?: number
   title: string
   genre: string
+  visible: boolean
 }
 export interface Category extends Record {
   id?: number

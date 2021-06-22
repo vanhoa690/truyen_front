@@ -42,7 +42,7 @@ const HomeFeed = ({ stories, storiesPopular, category, chapsPopular }) => {
             />
           ))}
       </div>
-      {category && (
+      {category && category.image && (
         <div className="md:col-span-full">
           <Image
             src={category.image}

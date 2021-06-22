@@ -28,7 +28,6 @@ export const RecordMutations = <T extends Record>({
           FormFields={FormFields}
           activeRecord={activeRecord}
           update={update}
-          remove={remove}
           success={success}
         />
       ) : (

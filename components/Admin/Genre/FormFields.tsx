@@ -27,7 +27,13 @@ export const GenreFormFields: React.FC<IProps> = (
         value={formState.genre}
         handleChange={handleChange}
       />
-
+      <Input
+        label="Visible"
+        name="visible"
+        type="checkbox"
+        checked={formState.visible}
+        handleChange={handleChange}
+      />
     </>
   )
 }

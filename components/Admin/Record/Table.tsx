@@ -2,6 +2,7 @@ import { Record } from "../../../interfaces/RecordEntities"
 import { TableProps } from "../../../interfaces/PagesProps"
 import usePagination from "../../../hooks/usePagination"
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid"
+import { useState } from "react"
 
 export const Table = <T extends Record>({
   records,
@@ -13,17 +14,22 @@ export const Table = <T extends Record>({
   textSearch,
   setTextSearch
 }: TableProps<T>) => {
+  const [itemsPerPage, setItemsPerPage] = useState<number>(5)
+
   const { slicedData, pagination, prevPage, nextPage, changePage } =
-    usePagination({ itemsPerPage: 6, data: records, startFrom: 1 })
+    usePagination({ itemsPerPage, data: records, startFrom: 1 })
   return (
     <>
       <div className="mt-3 flex flex-col sm:flex-row">
         <div className="flex">
           <div className="relative">
-            <select className="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-              <option>5</option>
-              <option>10</option>
-              <option>20</option>
+            <select
+              className="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              onChange={(e) => setItemsPerPage(Number(e.target.value))}
+            >
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={20}>20</option>
             </select>
 
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -92,7 +98,7 @@ export const Table = <T extends Record>({
         </thead>
 
         <tbody className="bg-white">
-          {slicedData.map((record, index) => (
+          {slicedData.map((record) => (
             <tr key={record.id}>
               <ListItem record={record} update={update} />
               <td className="px-6 py-4 whitespace-nowrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
@@ -133,11 +139,10 @@ export const Table = <T extends Record>({
                 return (
                   <a
                     key={page.id}
-                    className={`${
-                      page.current
-                        ? "z-10 bg-indigo-50 border-indigo-500 text-indigo-600"
-                        : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50"
-                    } relative inline-flex items-center px-4 py-2 border text-sm font-medium  cursor-pointer`}
+                    className={`${page.current
+                      ? "z-10 bg-indigo-50 border-indigo-500 text-indigo-600"
+                      : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50"
+                      } relative inline-flex items-center px-4 py-2 border text-sm font-medium  cursor-pointer`}
                     onClick={e => changePage(page.id, e)}
                   >
                     {page.id}

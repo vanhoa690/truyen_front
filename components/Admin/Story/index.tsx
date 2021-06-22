@@ -5,7 +5,10 @@ import { StoryFormFields } from "./FormFields"
 import { useState } from "react"
 const StoryPage: React.FC = () => {
   const [textSearch, setTextSearch] = useState<string>("")
-  const apiOptions = { title_like: textSearch }
+  const apiOptions = {
+    title_like: textSearch, _sort: "createdAt",
+    _order: "desc"
+  }
   const emptyRecord = {
     title: "",
     slug: "",
@@ -24,6 +27,7 @@ const StoryPage: React.FC = () => {
     { label: "Id", sortKey: "id" },
     { label: "Title", sortKey: "title" },
     { label: "Slug", sortKey: "slug" },
+    { label: "Category", sortKey: "category" },
     { label: "Description", sortKey: "description" },
     { label: "Visible", sortKey: "visible" },
     { label: "Popular", sortKey: "popular" },
