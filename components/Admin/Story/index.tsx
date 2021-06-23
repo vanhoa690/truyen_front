@@ -20,6 +20,7 @@ const StoryPage: React.FC = () => {
     category: categoryFilter ? categoryFilter : null,
   }
   const emptyRecord = {
+    id: '',
     title: "",
     slug: "",
     category: "",
@@ -36,7 +37,8 @@ const StoryPage: React.FC = () => {
     { label: "Title", sortKey: "title" },
     { label: "Slug", sortKey: "slug" },
     { label: "Category", sortKey: "category" },
-    { label: "Description", sortKey: "description" },
+    { label: "Genres", sortKey: "genres" },
+    // { label: "Description", sortKey: "description" },
     { label: "Visible" },
     { label: "Popular" },
     { label: "image" },

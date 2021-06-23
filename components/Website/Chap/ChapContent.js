@@ -67,8 +67,10 @@ const ChapContent = ({ story, chap, chapsRelated }) => {
           Next
         </button>
       </div>
-      <div className="p-10 text-justify">{chap.description}</div>
-      {/* <div dangerouslySetInnerHTML={{ __html: chap.description }}> </div> */}
+      <div
+        className="p-10 text-justify"
+        dangerouslySetInnerHTML={{ __html: chap.description }}
+      ></div>
     </div>
   )
 }

@@ -8,7 +8,7 @@ const ChapModal = ({ showModal, setShowModal, id, title, description }) => {
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none py-10"
             onClick={() => setShowModal(false)}
           >
-            <div className="relative w-auto my-6 mx-auto mt-auto max-w-6xl">
+            <div className="relative w-auto mx-auto my-auto max-w-6xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                   <h3
@@ -27,12 +27,12 @@ const ChapModal = ({ showModal, setShowModal, id, title, description }) => {
                   </button>
                 </div>
                 <div className="relative p-6 flex-auto">
-                  <p
+                  <div
                     className="my-4 text-gray-600 text-lg leading-relaxed"
                     dangerouslySetInnerHTML={{
                       __html: description
                     }}
-                  ></p>
+                  ></div>
                 </div>
               </div>
             </div>

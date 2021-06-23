@@ -128,7 +128,9 @@ export const Table = <T extends Record>({
                 <option value="">All Stories</option>
                 {storiesFetch &&
                   storiesFetch.map(story => (
-                    <option value={story.id}>{story.title}</option>
+                    <option key={story.id} value={story.id}>
+                      {story.title}
+                    </option>
                   ))}
               </select>
 
@@ -153,7 +155,9 @@ export const Table = <T extends Record>({
                 <option value="">All Categories</option>
                 {categoriesFetch &&
                   categoriesFetch.map(category => (
-                    <option value={category.id}>{category.title}</option>
+                    <option key={category.id} value={category.id}>
+                      {category.title}
+                    </option>
                   ))}
               </select>
 
@@ -218,7 +222,10 @@ export const Table = <T extends Record>({
         <tbody className="bg-white">
           {slicedData.map(record => (
             <tr key={record.id}>
-              <ListItem record={record} update={update} />
+              <ListItem
+                record={record}
+                update={update}
+              />
               <td className="px-6 py-4 whitespace-nowrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
                 <a
                   className="text-indigo-600 hover:text-indigo-900 cursor-pointer"

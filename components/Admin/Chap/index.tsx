@@ -21,6 +21,7 @@ const ChapPage: React.FC = () => {
     story: storyFilter ? storyFilter : null,
   }
   const emptyRecord = {
+    id: '',
     title: "",
     slug: "",
     story: "",

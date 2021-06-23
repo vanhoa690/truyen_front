@@ -16,11 +16,10 @@ export const Input = ({
           type={type}
           autoComplete="off"
           name={name}
-          className={`${
-            type === "checkbox"
+          className={`${type === "checkbox"
               ? "form-checkbox h-5 w-5 text-gray-600 ml-5"
               : "w-full mt-2 border border-gray-900"
-          }`}
+            }`}
           value={value}
           checked={checked}
           onChange={handleChange}

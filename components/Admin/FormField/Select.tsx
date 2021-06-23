@@ -8,7 +8,7 @@ export const Select = <T extends Record>({ label, name, value, options, handleCh
         <label className="text-gray-700">{label}</label>
         <select name={name} value={value} onChange={handleChange}>
           <option value="">Select</option>
-          {options.map((option) => (
+          {options && options.length > 0 && options.map((option) => (
             <option key={option.id} value={option.id}>{option.title}</option>
           ))}
         </select>

@@ -12,6 +12,7 @@ const GenrePage: React.FC = () => {
     visible: visibleFilter ? visibleFilter : null
   }
   const emptyRecord = {
+    id: '',
     title: "",
     genre: "",
     visible: true

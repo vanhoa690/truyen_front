@@ -28,7 +28,10 @@ const StoryInfo = ({ story }) => {
         <h3 className="font-semibold text-lg leading-tight truncate">
           {story.title}
         </h3>
-        <p className="my-2">{story.description}</p>
+        <div
+          className="my-2 text-justify"
+          dangerouslySetInnerHTML={{ __html: story.description }}
+        ></div>
         <p className="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
           {story.author} &bull; {moment(story.updatedAt).format("DD MMM YYYY")}
         </p>

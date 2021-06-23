@@ -1,7 +1,9 @@
 import { useFetch } from "../../../hooks/useFetchAdmin"
 import { FormFieldsProps } from "../../../interfaces/PagesProps"
 import { Genre, Story, Category } from "../../../interfaces/RecordEntities"
-import { Input, Select, Textarea, MutilCheckbox } from "../FormField"
+import { Input, Select, Textarea, MutilCheckbox, TinyMCEForm } from "../FormField"
+import { useState, useEffect } from "react"
+
 
 type IProps = FormFieldsProps<Story>
 
@@ -11,6 +13,16 @@ export const StoryFormFields: React.FC<IProps> = ({
 }) => {
   const genresFetch = useFetch<Genre>("genres")
   const categoriesFetch = useFetch<Category>("categories")
+  const [genresCheck, setGenresCheck] = useState<string[]>(formState.genres)
+  const [des, setDesc] = useState<string>(formState.description)
+
+  useEffect(() => {
+    formState.description = des
+  }, [des])
+
+  useEffect(() => {
+    formState.genres = [...genresCheck]
+  }, [genresCheck])
   return (
     <>
       <Select
@@ -36,9 +48,8 @@ export const StoryFormFields: React.FC<IProps> = ({
       />
       <MutilCheckbox
         label="Genres"
-        name={"genres"}
-        value={formState.genres ? formState.genres : []}
-        handleChange={handleChange}
+        value={genresCheck ? genresCheck : []}
+        setGenresCheck={setGenresCheck}
         options={genresFetch.records}
       />
 
@@ -56,11 +67,10 @@ export const StoryFormFields: React.FC<IProps> = ({
         checked={formState.popular}
         handleChange={handleChange}
       />
-      <Textarea
+      <TinyMCEForm
         label="Description"
-        name="description"
-        value={formState.description}
-        handleChange={handleChange}
+        value={des ? des : ""}
+        setDesc={setDesc}
       />
       <Input
         label="TitleSeo"

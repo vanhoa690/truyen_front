@@ -3,14 +3,23 @@ import { ListItemProps } from "../../../interfaces/PagesProps"
 import moment from "moment"
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/solid"
 import Image from "next/image"
+import { Page, usePage } from "../../../contexts/Page"
 
 type IProps = ListItemProps<Category>
 
 export const CategoryListItem: React.FC<IProps> = ({ record, update }) => {
+  const { setPage } = usePage()
+  // const handleClickCategory = (page: Page, id: string) => {
+  //   setPage(page)
+  //   if (setCategoryFilter) {
+  //     setCategoryFilter(id)
+  //   }
+  // }
   return (
     <>
       <td className="px-6 py-4 border-b border-gray-200">{record.id}</td>
-      <td className="px-6 py-4 border-b border-gray-200">{record.title}</td>
+      <td className="px-6 py-4 border-b border-gray-200 cursor-pointer" onClick={() => setPage(Page.Story)
+      }>{record.title}</td>
       <td className="px-6 py-4 border-b border-gray-200">{record.slug}</td>
       <td className="px-6 py-4 border-b border-gray-200">
         {record.description}

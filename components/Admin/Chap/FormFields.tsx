@@ -1,7 +1,8 @@
 import { useFetch } from "../../../hooks/useFetchAdmin"
 import { FormFieldsProps } from "../../../interfaces/PagesProps"
 import { Genre, Chap, Story } from "../../../interfaces/RecordEntities"
-import { Input, Select, Textarea } from "../FormField"
+import { Input, Select, TinyMCEForm } from "../FormField"
+import { useState, useEffect } from "react"
 
 type IProps = FormFieldsProps<Chap>
 
@@ -9,8 +10,14 @@ export const ChapFormFields: React.FC<IProps> = ({
   formState,
   handleChange
 }) => {
-  const genresFetch = useFetch<Genre>("genres")
   const storiesFetch = useFetch<Story>("stories")
+  const genresFetch = useFetch<Genre>("genres")
+
+  const [des, setDesc] = useState<string>(formState.description)
+  useEffect(() => {
+    formState.description = des
+  }, [des])
+
   return (
     <>
       <Select
@@ -37,7 +44,7 @@ export const ChapFormFields: React.FC<IProps> = ({
       <Select
         label="Genre"
         name="genre"
-        value={formState.id ? formState.id : ""}
+        value={formState.genre ? formState.genre : ""}
         handleChange={handleChange}
         options={genresFetch.records}
       />
@@ -55,11 +62,10 @@ export const ChapFormFields: React.FC<IProps> = ({
         checked={formState.popular}
         handleChange={handleChange}
       />
-      <Textarea
+      <TinyMCEForm
         label="Description"
-        name="description"
-        value={formState.description}
-        handleChange={handleChange}
+        value={des ? des : ""}
+        setDesc={setDesc}
       />
       <Input
         label="Image"

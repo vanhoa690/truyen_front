@@ -127,8 +127,13 @@ export interface SelectProps<T> {
 
 export interface MutilCheckboxProps<T> {
   label: string
-  name: string
   value: string[]
   options: T[]
-  handleChange: (event: React.ChangeEvent<IChangeElement>) => void
+  setGenresCheck: Function
+}
+
+export interface TinyMCEFormProps {
+  label: string
+  value: string
+  setDesc: Function
 }

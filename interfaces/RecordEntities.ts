@@ -1,15 +1,15 @@
 export interface Record {
-  id?: number
-  title?: string
+  id: string
+  title: string
 }
 export interface Genre extends Record {
-  id?: number
+  id: string
   title: string
   genre: string
   visible: boolean
 }
 export interface Category extends Record {
-  id?: number
+  id: string
   title: string
   slug: string
   description: string
@@ -22,7 +22,7 @@ export interface Category extends Record {
   // stories?: Story[]
 }
 export interface Story extends Record {
-  id?: number
+  id: string
   title: string
   slug: string
   description: string
@@ -38,7 +38,7 @@ export interface Story extends Record {
   // category?: Category | null
 }
 export interface Chap extends Record {
-  id?: number
+  id: string
   title: string
   slug: string
   genre: string

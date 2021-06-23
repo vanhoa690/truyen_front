@@ -19,6 +19,7 @@ export const useForm = <T>(initialState: T, handleAction: Action<T>) => {
     } else {
       parsedValue = value
     }
+    console.log({ name })
     // const parsedValue = tagName === "SELECT" && value === "" ? null : value
     // const value = target.type === 'checkbox' ? target.checked : target.value;
     setFormState({ ...formState, [name]: parsedValue, updatedAt: new Date() })

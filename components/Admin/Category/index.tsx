@@ -10,9 +10,12 @@ const CategoryPage: React.FC = () => {
 
   const apiOptions = {
     title_like: textSearch ? textSearch : null,
+    _sort: 'createdAt',
+    _order: 'desc',
     visible: visibleFilter ? visibleFilter : null
   }
   const emptyRecord = {
+    id: '',
     title: "",
     description: "",
     slug: "",

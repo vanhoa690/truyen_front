@@ -1,9 +1,10 @@
 import { FormFieldsProps } from "../../../interfaces/PagesProps"
 import { Category } from "../../../interfaces/RecordEntities"
-import { Input, Textarea } from "../FormField"
-import { createSlug } from '../../../utils/createSlug'
+import { Input, Textarea, TinyMCEForm } from "../FormField"
+import { createSlug } from "../../../utils/createSlug"
+import { useState, useEffect } from "react"
 
-const imageDefault = 'https://picsum.photos/id/911/1500/300'
+const imageDefault = "https://picsum.photos/id/911/1500/300"
 
 type IProps = FormFieldsProps<Category>
 
@@ -11,19 +12,18 @@ export const CategoryFormFields: React.FC<IProps> = ({
   formState,
   handleChange
 }) => {
-  console.log({ formState })
-  if (formState.slug === '') {
-    formState = { ...formState, slug: createSlug(formState.title) }
-  }
-  if (formState.titleSeo === '') {
-    formState = { ...formState, titleSeo: formState.title }
-  }
-  if (formState.descSeo === '') {
-    formState = { ...formState, descSeo: formState.description }
-  }
-  if (formState.image === '') {
-    formState = { ...formState, image: imageDefault }
-  }
+  const [des, setDesc] = useState<string>(formState.description)
+  useEffect(() => {
+    formState.description = des
+  }, [des])
+  useEffect(() => {
+    formState.slug = createSlug(formState.title)
+    formState.titleSeo = formState.title
+    formState.descSeo = formState.description
+    if (formState.image === "") {
+      formState.image = imageDefault
+    }
+  }, [formState.title, formState.description])
   return (
     <>
       <Input
@@ -47,11 +47,10 @@ export const CategoryFormFields: React.FC<IProps> = ({
         checked={formState.visible}
         handleChange={handleChange}
       />
-      <Textarea
+      <TinyMCEForm
         label="Description"
-        name="description"
-        value={formState.description}
-        handleChange={handleChange}
+        value={des ? des : ""}
+        setDesc={setDesc}
       />
       <Input
         label="TitleSeo"
